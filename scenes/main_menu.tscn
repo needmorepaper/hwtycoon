@@ -25,12 +25,12 @@ var original_position = Vector2.ZERO
 func _ready():
 	original_position = position
 
-func _process(delta):
+func _process(_delta):
 	var mouse_pos = get_global_mouse_position()
 	# Change number to control sensitivity
-	var offset = (mouse_pos - original_position) / 50.0
+	var movement_offset = (mouse_pos - original_position) / 50.0
 	
-	position = original_position + offset
+	position = original_position + movement_offset
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_25wry"]

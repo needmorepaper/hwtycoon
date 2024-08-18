@@ -28,6 +28,7 @@ anchor_bottom = 1.0
 theme = ExtResource("1_nsg45")
 
 [node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
 offset_right = 432.0
 offset_bottom = 48.0
 color = Color(0.392157, 0.709804, 0.964706, 1)
@@ -81,6 +82,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_kylri")
 text = "Loans"
 
 [node name="Button2" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 144.0
 offset_top = 48.0
 offset_right = 288.0
@@ -90,6 +92,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_kylri")
 text = "Taxes"
 
 [node name="Button3" type="Button" parent="Panel"]
+layout_mode = 0
 offset_left = 288.0
 offset_top = 48.0
 offset_right = 432.0

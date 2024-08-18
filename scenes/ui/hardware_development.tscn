@@ -1,9 +1,320 @@
-[gd_scene format=3 uid="uid://6l6fkgpwc68x"]
+[gd_scene load_steps=22 format=3 uid="uid://6l6fkgpwc68x"]
+
+[ext_resource type="FontFile" uid="uid://ces8cy0k1egmf" path="res://resources/font/lato-bold-webfont.ttf" id="1_artkc"]
+[ext_resource type="Texture2D" uid="uid://dmmys4x51jukd" path="res://resources/imported_resources/hardw_x-sheet0.png" id="2_l58or"]
+[ext_resource type="Texture2D" uid="uid://vk5vyae4yroi" path="res://resources/imported_resources/hardw_cpu-sheet0.png" id="4_hdfo3"]
+[ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="5_sct0t"]
+[ext_resource type="Texture2D" uid="uid://d2616y37pjmwu" path="res://resources/imported_resources/add_24dp_FILL0_wght400_GRAD0_opsz24.png" id="6_5xtjv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tyo3q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1mrs1"]
+font = ExtResource("1_artkc")
+font_size = 24
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2cp78"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7r0ek"]
+
+[sub_resource type="GDScript" id="GDScript_g7n7n"]
+resource_name = "cpu_develop_button"
+script/source = "extends Button
+
+
+# Called when the node enters the scene tree for the first time.
+func _pressed():
+	pass
+"
+
+[sub_resource type="LabelSettings" id="LabelSettings_6dilj"]
+font = ExtResource("5_sct0t")
+font_size = 14
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bvn2s"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r2jl5"]
+bg_color = Color(0.545098, 0.764706, 0.290196, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hfvxu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eblx4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tptjt"]
+bg_color = Color(0.956863, 0.956863, 0.956863, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_b5h5s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kyy7y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_istj4"]
+font = ExtResource("1_artkc")
+font_size = 22
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ctalw"]
+font = ExtResource("5_sct0t")
+font_size = 12
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_jqm3j"]
+font = ExtResource("1_artkc")
+font_color = Color(0, 0, 0, 1)
 
 [node name="HardwareDevelopment" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.625
+anchor_bottom = 0.66
+offset_bottom = -0.160004
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_tyo3q")
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 388.0
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 48.0
+color = Color(0.392157, 0.709804, 0.964706, 1)
+
+[node name="Label" type="Label" parent="Panel/ColorRect"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 6.0
+offset_right = 119.0
+offset_bottom = 41.0
+text = "Select Hardware"
+label_settings = SubResource("LabelSettings_1mrs1")
+
+[node name="Close" type="TextureButton" parent="Panel/ColorRect"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 13.0
+offset_right = 44.0
+offset_bottom = 37.0
+texture_normal = ExtResource("2_l58or")
+texture_pressed = ExtResource("2_l58or")
+texture_hover = ExtResource("2_l58or")
+texture_disabled = ExtResource("2_l58or")
+texture_focused = ExtResource("2_l58or")
+
+[node name="SelectHardwareScreen" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_top = 48.0
+offset_right = 640.0
+offset_bottom = 388.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2cp78")
+
+[node name="Button" type="Button" parent="SelectHardwareScreen"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 29.0
+offset_right = 134.0
+offset_bottom = 115.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7r0ek")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7r0ek")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7r0ek")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_7r0ek")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7r0ek")
+script = SubResource("GDScript_g7n7n")
+
+[node name="HardwCpu-sheet0" type="Sprite2D" parent="SelectHardwareScreen/Button"]
+position = Vector2(43, 43)
+texture = ExtResource("4_hdfo3")
+
+[node name="Label" type="Label" parent="SelectHardwareScreen/Button"]
+layout_mode = 2
+offset_left = 9.0
+offset_top = 88.0
+offset_right = 78.0
+offset_bottom = 109.0
+text = "CPU | lvl. 1"
+label_settings = SubResource("LabelSettings_6dilj")
+
+[node name="ProgressBar" type="ProgressBar" parent="SelectHardwareScreen/Button"]
+layout_mode = 0
+offset_top = 111.0
+offset_right = 86.0
+offset_bottom = 119.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bvn2s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_r2jl5")
+value = 2.0
+show_percentage = false
+
+[node name="CPUScreen1" type="Panel" parent="."]
+layout_mode = 0
+offset_top = 48.0
+offset_right = 640.0
+offset_bottom = 388.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2cp78")
+
+[node name="Button" type="Button" parent="CPUScreen1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 305.0
+offset_right = 77.0
+offset_bottom = 336.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hfvxu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eblx4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tptjt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b5h5s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kyy7y")
+text = "BACK"
+
+[node name="Button2" type="Button" parent="CPUScreen1"]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 305.0
+offset_right = 632.0
+offset_bottom = 336.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hfvxu")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_eblx4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tptjt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_b5h5s")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kyy7y")
+text = "NEXT"
+
+[node name="Architectures" type="Panel" parent="CPUScreen1"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 40.0
+offset_right = 620.0
+offset_bottom = 308.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2cp78")
+
+[node name="Button" type="Button" parent="CPUScreen1/Architectures"]
+layout_mode = 2
+offset_right = 352.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "New Architecture"
+icon = ExtResource("6_5xtjv")
+alignment = 0
+
+[node name="Label4" type="Label" parent="CPUScreen1/Architectures"]
+layout_mode = 2
+offset_top = -32.0
+offset_right = 164.0
+text = "ARCHITECTURE"
+label_settings = SubResource("LabelSettings_istj4")
+
+[node name="Button2" type="Button" parent="CPUScreen1/Architectures"]
+layout_mode = 0
+offset_top = 36.0
+offset_right = 352.0
+offset_bottom = 68.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Default Architecture"
+alignment = 0
+
+[node name="Process" type="Panel" parent="CPUScreen1"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 40.0
+offset_right = 256.0
+offset_bottom = 308.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_2cp78")
+
+[node name="Label" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 184.0
+offset_bottom = 41.0
+text = "Maximum researched clock speed:"
+label_settings = SubResource("LabelSettings_ctalw")
+
+[node name="Label2" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 41.0
+offset_right = 46.0
+offset_bottom = 59.0
+text = "140 kHz"
+label_settings = SubResource("LabelSettings_ctalw")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 59.0
+text = "CORE"
+label_settings = SubResource("LabelSettings_istj4")
+
+[node name="MenuButton" type="MenuButton" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 183.0
+offset_right = 118.0
+offset_bottom = 214.0
+text = "Choose here..."
+item_count = 1
+popup/item_0/text = "15 μm"
+
+[node name="Label5" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 121.0
+offset_right = 110.0
+offset_bottom = 139.0
+text = "Design speed: 100%"
+label_settings = SubResource("LabelSettings_ctalw")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 139.0
+offset_right = 86.0
+offset_bottom = 157.0
+text = "Unit cost: 100%"
+label_settings = SubResource("LabelSettings_ctalw")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 59.0
+offset_right = 118.0
+offset_bottom = 77.0
+text = "Possible clock speeds:"
+label_settings = SubResource("LabelSettings_ctalw")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 77.0
+offset_right = 118.0
+offset_bottom = 95.0
+text = "100 kHz - 600 kHz"
+label_settings = SubResource("LabelSettings_ctalw")
+
+[node name="Label9" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_right = 107.0
+offset_bottom = 23.0
+text = "CLOCK SPEED"
+label_settings = SubResource("LabelSettings_jqm3j")
+
+[node name="Label10" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 107.0
+offset_bottom = 121.0
+text = "MODIFIERS"
+label_settings = SubResource("LabelSettings_jqm3j")
+
+[node name="Label11" type="Label" parent="CPUScreen1/Process"]
+layout_mode = 0
+offset_top = 160.0
+offset_right = 107.0
+offset_bottom = 183.0
+text = "CPU PROCESS"
+label_settings = SubResource("LabelSettings_jqm3j")

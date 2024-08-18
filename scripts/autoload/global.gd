@@ -23,7 +23,11 @@ func initialize_game_config():
 ## This function returns a value from the GameConfig.
 func get_game_config_value(section, key):
 	return GameConfig.get_value(section, key)
-	
+
+## This function sets a value in the GameConfig.
+func set_game_config_value(section, key, value):
+	GameConfig.set_value(section, key, value)
+	return
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -43,6 +47,4 @@ func _ready():
 	# Currently does not work.
 	# load_bar.set_value(100)
 	
-	# BUG: Slow performance changing to file, throws out error related to child
-	# loading if not using call_deferred. Additionally, no progress bar.
 	get_tree().call_deferred("change_scene_to_packed", main_menu_scene)

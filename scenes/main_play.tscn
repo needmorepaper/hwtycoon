@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://lxoexalxabme"]
+[gd_scene load_steps=50 format=3 uid="uid://lxoexalxabme"]
 
 [ext_resource type="Script" path="res://scripts/load_play_area.gd" id="1_qyf51"]
 [ext_resource type="LabelSettings" uid="uid://ld3ft58h4k75" path="res://resources/label_settings/default_bold.tres" id="2_hnjpe"]
@@ -12,48 +12,49 @@
 [ext_resource type="Texture2D" uid="uid://dsdyp1sjxdd26" path="res://resources/imported_resources/ui_time0-sheet0.png" id="8_8qfij"]
 [ext_resource type="Shader" uid="uid://dxeo8pyiomxlh" path="res://resources/visual_shader/pause_button_red.tres" id="8_jfgn0"]
 [ext_resource type="Texture2D" uid="uid://2fr3h3yoybfr" path="res://resources/imported_resources/menu_exit-sheet0.png" id="10_yl8g4"]
+[ext_resource type="Texture2D" uid="uid://c28qcqdrjup20" path="res://resources/imported_resources/ui_menu-sheet0.png" id="13_crfut"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6whj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27o8q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lt3x"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dmeuv"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6jbn"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lt3x"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27o8q"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6whj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5q8md"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00lsi"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjawk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36v2s"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dx18y"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oq4wk"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_36v2s"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_00lsi"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rjawk"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8yg08"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8v3rd"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_svnsc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bsij1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_a2ain"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_svnsc"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8v3rd"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8yg08"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_41o27"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lutr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rjs5"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hx4gw"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5k68n"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rjs5"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_41o27"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2lutr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ihgds"]
 shader = ExtResource("8_jfgn0")
@@ -85,11 +86,13 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="GDScript" id="GDScript_ympo2"]
 resource_name = "dropdown_manager"
 script/source = "extends Panel
-@onready var new_hardware_scene = 
-@onready var bank_scene = load(\"res://scenes/ui/bank.tscn\")
+@onready var new_hardware_scene = preload(\"res://scenes/ui/hardware_development.tscn\")
+@onready var bank_scene = preload(\"res://scenes/ui/bank.tscn\")
 
 func _on_new_hardware_pressed():
-	pass # Replace with function body.
+	var new_hardware_instance = new_hardware_scene.instantiate()
+	add_child(new_hardware_instance)
+	new_hardware_scene.set_global_position(1024, 576)
 
 func _on_research_pressed():
 	pass # Replace with function body.
@@ -129,6 +132,27 @@ script/source = "extends TextureButton
 func _pressed():
 	print(\"Returning to main menu\")
 	get_tree().change_scene_to_file(\"res://scenes/main_menu.tscn\")
+"
+
+[sub_resource type="GDScript" id="GDScript_smvoh"]
+resource_name = "PauseManager"
+script/source = "extends TextureButton
+@onready var game_timer = %TickTimer
+@onready var pause_controls = %PauseBar
+
+func _ready():
+	pass
+
+# TODO: Time controls are still available, figure out a way to
+# disable them while the PauseBar node is visible.
+func _pressed():
+	if game_timer.paused != true:
+		game_timer.paused = true
+	self.visible = !self.visible
+	pause_controls.visible = !pause_controls.visible
+
+func _on_unpause_button_pressed():
+	_pressed()
 "
 
 [node name="Node2D" type="Node2D"]
@@ -186,6 +210,7 @@ offset_right = 160.0
 offset_bottom = 60.0
 
 [node name="TickTimer" type="Timer" parent="TopBar/TimeControls"]
+unique_name_in_owner = true
 wait_time = 0.5
 script = ExtResource("5_r7i2g")
 metadata/paused = false
@@ -196,11 +221,11 @@ offset_left = 24.0
 offset_top = 32.0
 offset_right = 40.0
 offset_bottom = 48.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_c6whj")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_27o8q")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_2lt3x")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_dmeuv")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_p6jbn")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_2lt3x")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_27o8q")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_c6whj")
 
 [node name="Speed1Texture" type="Sprite2D" parent="TopBar/TimeControls/Speed1Button"]
 unique_name_in_owner = true
@@ -215,11 +240,11 @@ offset_left = 44.0
 offset_top = 32.0
 offset_right = 66.0
 offset_bottom = 48.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_00lsi")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rjawk")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_36v2s")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_dx18y")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oq4wk")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_36v2s")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_rjawk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_00lsi")
 
 [node name="Speed2Texture" type="Sprite2D" parent="TopBar/TimeControls/Speed2Button"]
 unique_name_in_owner = true
@@ -233,11 +258,11 @@ offset_left = 68.0
 offset_top = 32.0
 offset_right = 92.0
 offset_bottom = 48.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8v3rd")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_8yg08")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_svnsc")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_bsij1")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_a2ain")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_svnsc")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_8yg08")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_8v3rd")
 
 [node name="Speed3Texture" type="Sprite2D" parent="TopBar/TimeControls/Speed3Button"]
 unique_name_in_owner = true
@@ -251,11 +276,11 @@ offset_left = 96.0
 offset_top = 32.0
 offset_right = 112.0
 offset_bottom = 48.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_2lutr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_41o27")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_4rjs5")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_hx4gw")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_5k68n")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_4rjs5")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_41o27")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_2lutr")
 
 [node name="PauseTexture" type="Sprite2D" parent="TopBar/TimeControls/PauseButton"]
 unique_name_in_owner = true
@@ -363,6 +388,7 @@ text = "Bank"
 alignment = 0
 
 [node name="PauseBar" type="Control" parent="."]
+unique_name_in_owner = true
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -392,8 +418,31 @@ offset_bottom = 575.0
 texture_normal = ExtResource("10_yl8g4")
 script = SubResource("GDScript_e4ufq")
 
+[node name="UnpauseButton" type="TextureButton" parent="PauseBar"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 540.0
+offset_right = 58.0
+offset_bottom = 570.0
+texture_normal = ExtResource("5_prm3u")
+texture_pressed = ExtResource("5_prm3u")
+texture_hover = ExtResource("5_prm3u")
+texture_disabled = ExtResource("5_prm3u")
+texture_focused = ExtResource("5_prm3u")
+stretch_mode = 0
+
+[node name="PauseButton" type="TextureButton" parent="."]
+offset_left = 8.0
+offset_top = 529.0
+offset_right = 50.0
+offset_bottom = 568.0
+texture_normal = ExtResource("13_crfut")
+ignore_texture_size = true
+script = SubResource("GDScript_smvoh")
+
 [connection signal="timeout" from="TopBar/TimeControls/TickTimer" to="TopBar/TimeControls/TickTimer" method="_on_timeout"]
 [connection signal="pressed" from="TopBar/TimeControls/Speed1Button" to="TopBar/TimeControls/TickTimer" method="_on_speed_1_button_pressed"]
 [connection signal="pressed" from="TopBar/TimeControls/Speed2Button" to="TopBar/TimeControls/TickTimer" method="_on_speed_2_button_pressed"]
 [connection signal="pressed" from="TopBar/TimeControls/Speed3Button" to="TopBar/TimeControls/TickTimer" method="_on_speed_3_button_pressed"]
 [connection signal="pressed" from="TopBar/TimeControls/PauseButton" to="TopBar/TimeControls/TickTimer" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="PauseBar/UnpauseButton" to="PauseButton" method="_on_unpause_button_pressed"]

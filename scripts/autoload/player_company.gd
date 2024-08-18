@@ -2,7 +2,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var _PlayerCompany = {
+	var PlayerCompany = {
 		"Cash": 0, ## Money available
 		"CEOName": "Steve Jobs", ## Name of CEO
 		"CompanyName": "Apple Computer Inc.", ## Company name

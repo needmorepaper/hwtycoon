@@ -28,3 +28,4 @@ build/web/
 
 # Temporary files that keep showing up (?)
 *.tmp
+.stfolder/

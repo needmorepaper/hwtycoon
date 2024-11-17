@@ -20,7 +20,6 @@ font_size = 24
 resource_name = "cpu_develop_button"
 script/source = "extends Button
 
-
 # Called when the node enters the scene tree for the first time.
 func _pressed():
 	pass
@@ -217,7 +216,7 @@ offset_top = 36.0
 offset_right = 352.0
 offset_bottom = 68.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Default Architecture"
+text = " Default Architecture"
 alignment = 0
 
 [node name="Process" type="Panel" parent="CPUScreen1"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://lxoexalxabme"]
+[gd_scene load_steps=51 format=3 uid="uid://lxoexalxabme"]
 
 [ext_resource type="Script" path="res://scripts/load_play_area.gd" id="1_qyf51"]
 [ext_resource type="LabelSettings" uid="uid://ld3ft58h4k75" path="res://resources/label_settings/default_bold.tres" id="2_hnjpe"]
@@ -13,6 +13,7 @@
 [ext_resource type="Shader" uid="uid://dxeo8pyiomxlh" path="res://resources/visual_shader/pause_button_red.tres" id="8_jfgn0"]
 [ext_resource type="Texture2D" uid="uid://2fr3h3yoybfr" path="res://resources/imported_resources/menu_exit-sheet0.png" id="10_yl8g4"]
 [ext_resource type="Texture2D" uid="uid://c28qcqdrjup20" path="res://resources/imported_resources/ui_menu-sheet0.png" id="13_crfut"]
+[ext_resource type="PackedScene" uid="uid://6l6fkgpwc68x" path="res://scenes/ui/hardware_development.tscn" id="14_hj2t8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_27o8q"]
 
@@ -86,13 +87,13 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="GDScript" id="GDScript_ympo2"]
 resource_name = "dropdown_manager"
 script/source = "extends Panel
-@onready var new_hardware_scene = preload(\"res://scenes/ui/hardware_development.tscn\")
-@onready var bank_scene = preload(\"res://scenes/ui/bank.tscn\")
+@onready var dimmed_bg = %DimmedRootBG
+@onready var pause_button = %PauseButton
 
 func _on_new_hardware_pressed():
-	var new_hardware_instance = new_hardware_scene.instantiate()
-	add_child(new_hardware_instance)
-	new_hardware_scene.set_global_position(1024, 576)
+	var hardware_ui = %HardwareDevelopment
+	dimmed_bg.visible = true
+	hardware_ui.visible = true
 
 func _on_research_pressed():
 	pass # Replace with function body.
@@ -432,6 +433,7 @@ texture_focused = ExtResource("5_prm3u")
 stretch_mode = 0
 
 [node name="PauseButton" type="TextureButton" parent="."]
+unique_name_in_owner = true
 offset_left = 8.0
 offset_top = 529.0
 offset_right = 50.0
@@ -439,6 +441,22 @@ offset_bottom = 568.0
 texture_normal = ExtResource("13_crfut")
 ignore_texture_size = true
 script = SubResource("GDScript_smvoh")
+
+[node name="DimmedRootBG" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_top = 60.0
+offset_right = 1024.0
+offset_bottom = 576.0
+color = Color(0.207843, 0.207843, 0.207843, 0.658824)
+
+[node name="HardwareDevelopment" parent="DimmedRootBG" instance=ExtResource("14_hj2t8")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 192.0
+offset_top = 68.0
+offset_right = 192.0
+offset_bottom = 68.0
 
 [connection signal="timeout" from="TopBar/TimeControls/TickTimer" to="TopBar/TimeControls/TickTimer" method="_on_timeout"]
 [connection signal="pressed" from="TopBar/TimeControls/Speed1Button" to="TopBar/TimeControls/TickTimer" method="_on_speed_1_button_pressed"]

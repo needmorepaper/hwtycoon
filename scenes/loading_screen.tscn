@@ -1,22 +1,73 @@
-[gd_scene load_steps=2 format=3 uid="uid://dkxn51njttu01"]
+[gd_scene load_steps=5 format=3 uid="uid://dkxn51njttu01"]
 
-[ext_resource type="Texture2D" uid="uid://b6rck73duonis" path="res://resources/imported_resources/load_back-sheet0.png" id="1_a4rrw"]
+[ext_resource type="Script" uid="uid://cvsh2qm5jddil" path="res://scripts/loading_screen/loading_screen.gd" id="1_ku3bi"]
+[ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="2_5phy8"]
+[ext_resource type="FontFile" uid="uid://ces8cy0k1egmf" path="res://resources/font/lato-bold-webfont.ttf" id="2_hprjd"]
+[ext_resource type="Texture2D" uid="uid://c6428d1g4k4sy" path="res://resources/imported_resources/mm_cpu-sheet0.png" id="4_djmwj"]
 
-[node name="LoadingScreen" type="Control"]
-layout_mode = 3
+[node name="LoadingScreen" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_ku3bi")
 
-[node name="BG" type="Sprite2D" parent="."]
-position = Vector2(512, 288)
-texture = ExtResource("1_a4rrw")
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.392157, 0.709804, 0.964706, 1)
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = 432.0
-offset_top = 400.0
-offset_right = 601.0
-offset_bottom = 427.0
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="BoxContainer" type="BoxContainer" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+alignment = 1
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="CenterContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="CenterContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CenterContainer/BoxContainer/BoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="CPU" type="TextureRect" parent="CenterContainer/BoxContainer/BoxContainer/MarginContainer2/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("4_djmwj")
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/BoxContainer/BoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_constants/line_separation = -44
+theme_override_fonts/normal_font = ExtResource("2_5phy8")
+theme_override_fonts/bold_font = ExtResource("2_hprjd")
+theme_override_font_sizes/normal_font_size = 72
+theme_override_font_sizes/bold_font_size = 72
+bbcode_enabled = true
+text = "[b]Hardware[/b] [right]Tycoon[/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="CenterContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CenterContainer/BoxContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+max_value = 1.0

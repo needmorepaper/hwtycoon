@@ -1,50 +1,30 @@
-class_name GlobalInit extends Node
-## [b]GlobalInit[/b] is where everything that needs to be initialized for launch goes.
+extends Node
+## This is where everything that needs to be initialized for launch goes.
 
-var GameConfig = ConfigFile.new() ## Starts the ConfigFile class
+@onready var loading_screen_scene = load("res://scenes/loading_screen.tscn") ## Holds the scene used for loading between scenes
+var current_scene ## Holds the path to the current scene loaded through load_scene()
 
-## This function initializes the Game's configuration file.
-## It can also be used to set the settings to their defaults.
-func initialize_game_config():
-	GameConfig.set_value("Audio", "music_volume", 0.95) ## Music volume
-	GameConfig.set_value("Audio", "sound_volume", 0.75) ## Sound volume
-	GameConfig.set_value("Display", "fullscreen", 0) ## Fullscreen
-	GameConfig.set_value("Game", "autosave", 1) ## Autosaves the current game every month
-	GameConfig.set_value("Game", "number_rounding", 1) ## Rounds up big numbers
-	GameConfig.set_value("Game", "tax_notifs", 1) ## Shows a tax notification when it's paid for
-	GameConfig.set_value("Game", "graph_scaling", 1) ## Automatically scales graphs
-	GameConfig.set_value("Game", "competitor_news", 1) ## Shows your competitor's latest products
-	GameConfig.set_value("Game", "r&d_autoscroll", 1) ## Autoscrolls your R&D tab to the latest tech
-	GameConfig.set_value("Game", "text_speed", 29) ## How fast text scrolls
-	GameConfig.save("user://gamesettings.cfg")
-	print("GameConfig initialized")
-	return
+var game_config = GameConfig.new()
+var player_company: PlayerCompany:
+	set(value):
+		add_child(value)
+		player_company = value
 
-## This function returns a value from the GameConfig.
-func get_game_config_value(section, key):
-	return GameConfig.get_value(section, key)
+# Change window_mode on set game_config.fullscreen
+func _on_game_config_fullscreen_changed(value):
+	if (value):
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 
-## This function sets a value in the GameConfig.
-func set_game_config_value(section, key, value):
-	GameConfig.set_value(section, key, value)
-	return
+## This function loads scene_path via the loading_screen_scene.
+func load_scene(scene_path: String):
+	current_scene = scene_path
+	get_tree().change_scene_to_packed(loading_screen_scene)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("Hardware Tycoon (godot) v0.2.12")
-	# var load_bar = get_node("/root/LoadingScreen/ProgressBar")
-	var main_menu_scene = preload("res://scenes/main_menu.tscn")
-	
-	var err = GameConfig.load("user://gamesettings.cfg")
-	if err != OK:
-		push_warning("Game config failed to load for unknown reason, initializing")
-		# TODO: Tell user their config's invalid and has been reset
-		# TODO: Check if there are alternate reasons for why a file doesn't load
-		initialize_game_config()
-		return
-	
-	print("Game config loaded")
-	# Currently does not work.
-	# load_bar.set_value(100)
-	
-	get_tree().call_deferred("change_scene_to_packed", main_menu_scene)
+	print("Hardware Tycoon for Godot 4")
+	add_child(game_config)
+	game_config.fullscreen_changed.connect(_on_game_config_fullscreen_changed)
+	call_deferred("load_scene","res://scenes/main_menu.tscn")

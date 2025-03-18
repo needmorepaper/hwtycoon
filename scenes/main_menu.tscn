@@ -1,426 +1,960 @@
-[gd_scene load_steps=22 format=3 uid="uid://djpgwfhqbxfi2"]
+[gd_scene load_steps=41 format=3 uid="uid://djpgwfhqbxfi2"]
 
-[ext_resource type="Shader" uid="uid://b3mhd7qe7y4du" path="res://resources/visual_shader/trademark_blue.tres" id="1_rky7e"]
+[ext_resource type="Script" uid="uid://dd8sttdr1qfj5" path="res://scripts/main_menu/main_menu.gd" id="1_1ajci"]
+[ext_resource type="Script" uid="uid://s7kmnaooblod" path="res://scripts/main_menu/TextureRect/texture_rect_mouse_offset.gd" id="2_1ajci"]
+[ext_resource type="Texture2D" uid="uid://c6428d1g4k4sy" path="res://resources/imported_resources/mm_cpu-sheet0.png" id="2_7b55j"]
 [ext_resource type="Theme" uid="uid://cw13xaerpch24" path="res://resources/theme/general.theme" id="2_e16di"]
+[ext_resource type="Script" uid="uid://ch71y4wslechh" path="res://scripts/main_menu/TextureRect/texture_rect_rotate.gd" id="3_5pajh"]
 [ext_resource type="Texture2D" uid="uid://18jv701vii4t" path="res://resources/imported_resources/mm_garage-sheet0.png" id="3_7phob"]
-[ext_resource type="LabelSettings" uid="uid://0choly6ya1o1" path="res://resources/label_settings/subtitle.tres" id="3_bax4s"]
-[ext_resource type="Shader" uid="uid://cpq3uhr4vunkl" path="res://resources/visual_shader/white_cpu.tres" id="4_4exxx"]
-[ext_resource type="Texture2D" uid="uid://vk5vyae4yroi" path="res://resources/imported_resources/hardw_cpu-sheet0.png" id="5_jim6u"]
+[ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="4_j7ex8"]
 [ext_resource type="FontFile" uid="uid://ces8cy0k1egmf" path="res://resources/font/lato-bold-webfont.ttf" id="6_m8ng4"]
 [ext_resource type="LabelSettings" uid="uid://cjtke0ijps10s" path="res://resources/label_settings/default_style.tres" id="7_tl45y"]
-[ext_resource type="Script" path="res://scripts/init_main_play.gd" id="8_5fj2s"]
-[ext_resource type="Script" path="res://scripts/button_panel_control.gd" id="8_872ey"]
-[ext_resource type="LabelSettings" uid="uid://5bef3mnr8xka" path="res://resources/label_settings/main_title.tres" id="9_e7jlu"]
 [ext_resource type="Texture2D" uid="uid://bn34o80wt3ove" path="res://resources/imported_resources/mm_fullscreen-sheet0.png" id="10_oy37t"]
+[ext_resource type="Texture2D" uid="uid://ddog4r01p5db0" path="res://resources/imported_resources/mm_fullscreen-sheet1.png" id="11_1ajci"]
+[ext_resource type="FontFile" uid="uid://dn6eeashribl" path="res://resources/font/lato-light-webfont.ttf" id="12_7b55j"]
+[ext_resource type="Script" uid="uid://bp3ywn6lkwonb" path="res://scripts/main_menu/new_game_menu.gd" id="12_j7ex8"]
+[ext_resource type="Texture2D" uid="uid://ddsqpl7sxx6du" path="res://resources/imported_resources/creation_settings-sheet0.png" id="14_a8gd2"]
+[ext_resource type="Script" uid="uid://bp2tmvajxrgny" path="res://scripts/main_menu/settings_menu.gd" id="15_5pajh"]
+[ext_resource type="Script" uid="uid://beyckbtod0b41" path="res://scripts/main_menu/about_menu.gd" id="16_5pajh"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_25i0a"]
-shader = ExtResource("1_rky7e")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5pajh"]
 
-[sub_resource type="GDScript" id="GDScript_m0xa4"]
-resource_name = "background_cursor_scrolling"
-script/source = "extends Sprite2D
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j7ex8"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(0.607843, 0.823529, 0.615686, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-var original_position = Vector2.ZERO
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hstxw"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(0.819608, 0.917647, 0.823529, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-func _ready():
-	original_position = position
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8gd2"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(0.298039, 0.686275, 0.313726, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-func _process(_delta):
-	var mouse_pos = get_global_mouse_position()
-	# Change number to control sensitivity
-	var movement_offset = (mouse_pos - original_position) / 50.0
-	
-	position = original_position + movement_offset
-"
+[sub_resource type="Theme" id="Theme_7b55j"]
+Button/colors/font_color = Color(0, 0, 0, 0.5)
+Button/colors/font_hover_color = Color(0, 0, 0, 0.5)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("4_j7ex8")
+Button/styles/hover = SubResource("StyleBoxFlat_j7ex8")
+Button/styles/normal = SubResource("StyleBoxFlat_hstxw")
+Button/styles/pressed = SubResource("StyleBoxFlat_a8gd2")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_25wry"]
-shader = ExtResource("4_4exxx")
+[sub_resource type="ButtonGroup" id="ButtonGroup_8egab"]
 
-[sub_resource type="GDScript" id="GDScript_jx2nn"]
-resource_name = "RotateCPUIcon"
-script/source = "extends Sprite2D
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5pajh"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.956863, 0.568627, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8egab"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.980392, 0.8, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gw5y6"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.921569, 0.231373, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
+[sub_resource type="Theme" id="Theme_svtp6"]
+Button/colors/font_color = Color(0, 0, 0, 0.5)
+Button/colors/font_hover_color = Color(0, 0, 0, 0.5)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("4_j7ex8")
+Button/styles/hover = SubResource("StyleBoxFlat_5pajh")
+Button/styles/normal = SubResource("StyleBoxFlat_8egab")
+Button/styles/pressed = SubResource("StyleBoxFlat_gw5y6")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	var speed = 0.33
-	rotation += speed*delta
-	
-	# TODO: Make a CPU show up and float off screen whenever you click.
-	#if Input.is_action_just_pressed(\"click\"):
-	#	pass"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1dfpl"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.772549, 0.439216, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="LabelSettings" id="LabelSettings_o8q82"]
-font = ExtResource("6_m8ng4")
-font_size = 64
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qywvv"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.894118, 0.741176, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erdtn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wgol"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.596078, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="GDScript" id="GDScript_w4t2l"]
-resource_name = "ReturnToMainMenuFromNewGame"
-script/source = "extends Button
+[sub_resource type="Theme" id="Theme_1acrt"]
+Button/colors/font_color = Color(0, 0, 0, 0.5)
+Button/colors/font_hover_color = Color(0, 0, 0, 0.5)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("4_j7ex8")
+Button/styles/hover = SubResource("StyleBoxFlat_1dfpl")
+Button/styles/normal = SubResource("StyleBoxFlat_qywvv")
+Button/styles/pressed = SubResource("StyleBoxFlat_3wgol")
 
-@onready var new_game_panel = get_tree().get_root().get_node(\"/root/Control/StartGamePanel\")
-@onready var button_panel = get_tree().get_root().get_node(\"/root/Control/MainPanel/ButtonPanel\")
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vr8o3"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(0.976471, 0.584314, 0.556863, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-func _pressed():
-	new_game_panel.visible = !new_game_panel.visible
-	button_panel.visible = !button_panel.visible
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1a85y"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(0.988235, 0.807843, 0.796078, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="GDScript" id="GDScript_owij1"]
-resource_name = "ReturnToMainMenuFromSettings"
-script/source = "extends Button
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl5e0"]
+content_margin_top = 2.0
+content_margin_bottom = 4.0
+bg_color = Color(0.956863, 0.262745, 0.211765, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-@onready var MainPanel = get_tree().get_root().get_node(\"/root/Control/MainPanel/ButtonPanel\")
-@onready var SettingsPanel = get_tree().get_root().get_node(\"/root/Control/SettingsPanel\")
+[sub_resource type="Theme" id="Theme_engjn"]
+Button/colors/font_color = Color(1, 1, 1, 0.5)
+Button/colors/font_hover_color = Color(1, 1, 1, 0.5)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("4_j7ex8")
+Button/styles/hover = SubResource("StyleBoxFlat_vr8o3")
+Button/styles/normal = SubResource("StyleBoxFlat_1a85y")
+Button/styles/pressed = SubResource("StyleBoxFlat_hl5e0")
 
-func _pressed():
-	MainPanel.visible = !MainPanel.visible
-	SettingsPanel.visible = !SettingsPanel.visible
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_engjn"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-"
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7b55j"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0, 0, 0, 0.1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-[sub_resource type="GDScript" id="GDScript_0dhct"]
-resource_name = "fullscreen_control"
-script/source = "extends TextureButton
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_svtp6"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1acrt"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
 
-# Called when the node enters the scene tree for the first time.
-func _pressed():
-	var current_mode = DisplayServer.window_get_mode()
-	var fullscreen_off = load(\"res://resources/imported_resources/mm_fullscreen-sheet0.png\")
-	var fullscreen_on = load(\"res://resources/imported_resources/mm_fullscreen-sheet1.png\")
-	if current_mode == DisplayServer.WINDOW_MODE_WINDOWED:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		set_texture_normal(fullscreen_on)
-		set_texture_hover(fullscreen_off)
-	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		set_texture_normal(fullscreen_off)
-		set_texture_hover(fullscreen_on)
-"
+[sub_resource type="Theme" id="Theme_vr8o3"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.2)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("6_m8ng4")
+Button/styles/disabled = SubResource("StyleBoxFlat_engjn")
+Button/styles/hover = SubResource("StyleBoxFlat_7b55j")
+Button/styles/normal = SubResource("StyleBoxFlat_svtp6")
+Button/styles/pressed = SubResource("StyleBoxFlat_1acrt")
 
-[node name="Control" type="Control"]
-layout_mode = 3
+[sub_resource type="Theme" id="Theme_5pajh"]
+CheckButton/icons/checked = null
+CheckButton/icons/unchecked = null
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1ajci")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.392157, 0.709804, 0.964706, 1)
+
+[node name="GarageMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 350
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/GarageMarginContainer"]
+layout_mode = 2
+
+[node name="Garage" type="TextureRect" parent="BackgroundColorRect/GarageMarginContainer/MarginContainer"]
+custom_minimum_size = Vector2(265, 265)
+layout_mode = 2
+texture = ExtResource("3_7phob")
+expand_mode = 3
+stretch_mode = 5
+script = ExtResource("2_1ajci")
+
+[node name="MainMenuMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainPanel" type="Panel" parent="."]
-material = SubResource("ShaderMaterial_25i0a")
-layout_mode = 0
-offset_right = 1024.0
-offset_bottom = 576.0
+[node name="TitleMarginContainer" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/margin_top = 15
 
-[node name="MmGarage-sheet0" type="Sprite2D" parent="MainPanel"]
-position = Vector2(512, 464)
-scale = Vector2(0.527778, 0.523809)
-texture = ExtResource("3_7phob")
-script = SubResource("GDScript_m0xa4")
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer"]
+layout_mode = 2
 
-[node name="GodotLabel" type="Label" parent="MainPanel"]
-layout_mode = 0
-offset_left = 640.0
-offset_top = 110.0
-offset_right = 792.0
-offset_bottom = 145.0
-text = "for Godot 4"
-label_settings = ExtResource("3_bax4s")
-horizontal_alignment = 1
+[node name="IconMarginContainer" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 25
 
-[node name="HardwCpu-sheet0" type="Sprite2D" parent="MainPanel"]
-material = SubResource("ShaderMaterial_25wry")
-position = Vector2(232, 80)
-texture = ExtResource("5_jim6u")
-script = SubResource("GDScript_jx2nn")
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer/BoxContainer/IconMarginContainer"]
+layout_mode = 2
 
-[node name="TitleLabel" type="Label" parent="MainPanel"]
-layout_mode = 0
-offset_left = 288.0
-offset_top = 32.0
-offset_right = 800.0
-offset_bottom = 128.0
-text = "Hardware Tycoon"
-label_settings = SubResource("LabelSettings_o8q82")
-horizontal_alignment = 1
+[node name="CPU" type="TextureRect" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer/BoxContainer/IconMarginContainer/AspectRatioContainer"]
+layout_mode = 2
+texture = ExtResource("2_7b55j")
+script = ExtResource("3_5pajh")
 
-[node name="BugLabel" type="Label" parent="MainPanel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 548.0
-offset_right = 490.0
-offset_bottom = 571.0
+[node name="LabelMarginContainer2" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer/BoxContainer/LabelMarginContainer2"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_constants/line_separation = -20
+theme_override_fonts/normal_font = ExtResource("4_j7ex8")
+theme_override_fonts/bold_font = ExtResource("6_m8ng4")
+theme_override_font_sizes/normal_font_size = 72
+theme_override_font_sizes/bold_font_size = 72
+bbcode_enabled = true
+text = "[b]Hardware Tycoon[/b]
+[right][font_size=26]for Godot 4   [/font_size][/right]"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="InfoMarginContainer" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 7
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/MainMenuMarginContainer/InfoMarginContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="VersionLabel" type="Label" parent="BackgroundColorRect/MainMenuMarginContainer/InfoMarginContainer/BoxContainer"]
+layout_mode = 2
+text = "Dev branch"
+label_settings = ExtResource("7_tl45y")
+
+[node name="BugLabel" type="Label" parent="BackgroundColorRect/MainMenuMarginContainer/InfoMarginContainer/BoxContainer"]
+layout_mode = 2
 text = "In early development, report all bugs to the GitHub repository."
 label_settings = ExtResource("7_tl45y")
 horizontal_alignment = 1
 
-[node name="VersionLabel" type="Label" parent="MainPanel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 524.0
-offset_right = 490.0
-offset_bottom = 547.0
-text = "Dev branch"
-label_settings = ExtResource("7_tl45y")
-
-[node name="ButtonPanel" type="Panel" parent="MainPanel"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxEmpty_erdtn")
-script = ExtResource("8_872ey")
-
-[node name="NewGameButton" type="Button" parent="MainPanel/ButtonPanel"]
+[node name="MenuMarginContainer" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer"]
 layout_mode = 2
-offset_top = 192.0
-offset_right = 1024.0
-offset_bottom = 256.0
+theme_override_constants/margin_top = 150
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+vertical = true
+
+[node name="NewGameButton" type="Button" parent="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
 focus_mode = 0
 theme = ExtResource("2_e16di")
 text = "New Game"
 
-[node name="LoadGameButton" type="Button" parent="MainPanel/ButtonPanel"]
+[node name="LoadGameButton" type="Button" parent="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-offset_top = 272.0
-offset_right = 1024.0
-offset_bottom = 336.0
 focus_mode = 0
 theme = ExtResource("2_e16di")
 disabled = true
 text = "Load"
 
-[node name="SettingsButton" type="Button" parent="MainPanel/ButtonPanel"]
+[node name="SettingsButton" type="Button" parent="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-offset_top = 352.0
-offset_right = 1024.0
-offset_bottom = 418.0
 focus_mode = 0
 theme = ExtResource("2_e16di")
 text = "Settings"
 
-[node name="AboutButton" type="Button" parent="MainPanel/ButtonPanel"]
+[node name="AboutButton" type="Button" parent="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
-offset_top = 432.0
-offset_right = 1024.0
-offset_bottom = 498.0
 focus_mode = 0
 theme = ExtResource("2_e16di")
 text = "About"
 
-[node name="StartGamePanel" type="Panel" parent="."]
+[node name="ButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/MainMenuMarginContainer/ButtonMarginContainer"]
+layout_mode = 2
+
+[node name="FullscreenButton" type="TextureButton" parent="BackgroundColorRect/MainMenuMarginContainer/ButtonMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+toggle_mode = true
+texture_normal = ExtResource("10_oy37t")
+texture_pressed = ExtResource("11_1ajci")
+stretch_mode = 0
+
+[node name="NewGameMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 2
-offset_left = 128.0
-offset_top = 168.0
-offset_right = 896.0
-offset_bottom = 488.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("12_j7ex8")
 
-[node name="NewGameLabel" type="Label" parent="StartGamePanel"]
+[node name="BackdropColorRect" type="ColorRect" parent="BackgroundColorRect/NewGameMarginContainer"]
 layout_mode = 2
-offset_left = 256.0
-offset_top = 8.0
-offset_right = 512.0
-offset_bottom = 43.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="HeaderColorRect" type="ColorRect" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+color = Color(0.392157, 0.709804, 0.964706, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/HeaderColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/HeaderColorRect/MarginContainer"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_j7ex8")
+theme_override_fonts/bold_font = ExtResource("6_m8ng4")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
 text = "Create your company"
-label_settings = ExtResource("3_bax4s")
-horizontal_alignment = 1
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
 
-[node name="NewGameReturnToMenu" type="Button" parent="StartGamePanel"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 280.0
-offset_right = 181.0
-offset_bottom = 312.0
-text = "Return to Main Menu"
-script = SubResource("GDScript_w4t2l")
-
-[node name="StartNewGame" type="Button" parent="StartGamePanel"]
+[node name="BodyColorRect" type="ColorRect" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
 layout_mode = 2
-offset_left = 664.0
-offset_top = 280.0
-offset_right = 760.0
-offset_bottom = 312.0
-text = "Start Game"
-script = ExtResource("8_5fj2s")
+size_flags_vertical = 3
 
-[node name="CompanyName" type="Label" parent="StartGamePanel"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 56.0
-offset_right = 138.0
-offset_bottom = 79.0
-text = "Company name"
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CompanyName" type="LineEdit" parent="StartGamePanel/CompanyName"]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer"]
 layout_mode = 2
-offset_top = 32.0
-offset_right = 256.0
-offset_bottom = 64.0
-placeholder_text = "Your company name"
-max_length = 40
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 70
 
-[node name="FounderName" type="Label" parent="StartGamePanel"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 128.0
-offset_right = 131.0
-offset_bottom = 151.0
-text = "Founder name"
-
-[node name="CEOFirstName" type="LineEdit" parent="StartGamePanel/FounderName"]
-unique_name_in_owner = true
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer"]
 layout_mode = 2
-offset_top = 32.0
-offset_right = 120.0
-offset_bottom = 64.0
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="NameBoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 40
+alignment = 1
+vertical = true
+
+[node name="CompanyBoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/CompanyBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.33, 0.33, 0.33, 1)
+theme_override_fonts/font = ExtResource("12_7b55j")
+theme_override_font_sizes/font_size = 16
+text = "Company Name"
+
+[node name="CompanyLineEdit" type="LineEdit" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/CompanyBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(0.33, 0.33, 0.33, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_j7ex8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5pajh")
+placeholder_text = "Your Company Name"
+
+[node name="HSeparator" type="HSeparator" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/CompanyBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/CompanyBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.33, 0.33, 0.33, 1)
+theme_override_fonts/font = ExtResource("12_7b55j")
+theme_override_font_sizes/font_size = 14
+text = "0/28"
+horizontal_alignment = 2
+
+[node name="FounderBoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="Label" type="Label" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.33, 0.33, 0.33, 1)
+theme_override_fonts/font = ExtResource("12_7b55j")
+theme_override_font_sizes/font_size = 16
+text = "Founder Name"
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer"]
+layout_mode = 2
+
+[node name="FirstNameLineEdit" type="LineEdit" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_placeholder_color = Color(0.33, 0.33, 0.33, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_j7ex8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5pajh")
 placeholder_text = "First Name"
-max_length = 40
 
-[node name="CEOLastName" type="LineEdit" parent="StartGamePanel/FounderName"]
-unique_name_in_owner = true
-layout_mode = 0
-offset_left = 136.0
-offset_top = 32.0
-offset_right = 256.0
-offset_bottom = 64.0
+[node name="LastNameLineEdit" type="LineEdit" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_placeholder_color = Color(0.33, 0.33, 0.33, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_j7ex8")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_5pajh")
 placeholder_text = "Last Name"
-max_length = 40
 
-[node name="Difficulty" type="Label" parent="StartGamePanel"]
-layout_mode = 0
-offset_left = 320.0
-offset_top = 56.0
-offset_right = 442.0
-offset_bottom = 79.0
-text = "Difficulty"
+[node name="HSeparator" type="HSeparator" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer"]
+layout_mode = 2
 
-[node name="VeryHardDifficulty" type="Button" parent="StartGamePanel/Difficulty"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 104.0
-offset_right = 192.0
-offset_bottom = 136.0
-text = "Very Hard"
+[node name="Label2" type="Label" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.33, 0.33, 0.33, 1)
+theme_override_fonts/font = ExtResource("12_7b55j")
+theme_override_font_sizes/font_size = 14
+text = "0/40"
+horizontal_alignment = 2
 
-[node name="HardDifficulty" type="Button" parent="StartGamePanel/Difficulty"]
-layout_mode = 0
-offset_top = 104.0
-offset_right = 88.0
-offset_bottom = 136.0
-text = "Hard"
+[node name="LogoMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="NormalDifficulty" type="Button" parent="StartGamePanel/Difficulty"]
-layout_mode = 0
-offset_left = 104.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 64.0
-text = "Normal"
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/LogoMarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_j7ex8")
+theme_override_fonts/bold_font = ExtResource("12_7b55j")
+theme_override_font_sizes/normal_font_size = 31
+bbcode_enabled = true
+text = "Company logo
+customization
+[font_size=14][b]Click to begin 
+( WIP )[/b][/font_size]"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="EasyDifficulty" type="Button" parent="StartGamePanel/Difficulty"]
-layout_mode = 0
-offset_top = 32.0
-offset_right = 88.0
-offset_bottom = 64.0
+[node name="LogoButton" type="Button" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/LogoMarginContainer/RichTextLabel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="DifficultyMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="EasyButton" type="Button" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_7b55j")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_8egab")
 text = "Easy"
 
-[node name="SettingsPanel" type="Panel" parent="."]
+[node name="NormalButton" type="Button" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_svtp6")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_8egab")
+text = "Normal"
+
+[node name="HardButton" type="Button" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_1acrt")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_8egab")
+text = "Hard"
+
+[node name="VeryHardButton" type="Button" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_engjn")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_8egab")
+text = "V. Hard"
+
+[node name="FooterColorRect" type="ColorRect" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" type="Button" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vr8o3")
+text = "BACK"
+
+[node name="DoneButton" type="Button" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_vr8o3")
+disabled = true
+text = "DONE"
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GameSettingsTextureButton" type="TextureButton" parent="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+toggle_mode = true
+texture_normal = ExtResource("14_a8gd2")
+stretch_mode = 4
+
+[node name="SettingsMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
-offset_left = 128.0
-offset_top = 168.0
-offset_right = 896.0
-offset_bottom = 488.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("15_5pajh")
 
-[node name="Label" type="Label" parent="SettingsPanel"]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 8.0
-offset_right = 444.0
-offset_bottom = 55.0
+[node name="BackdropColorRect" type="ColorRect" parent="BackgroundColorRect/SettingsMarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/SettingsMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="HeaderColorRect" type="ColorRect" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+color = Color(0.392157, 0.709804, 0.964706, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/HeaderColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/HeaderColorRect/MarginContainer"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_j7ex8")
+theme_override_fonts/bold_font = ExtResource("6_m8ng4")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
 text = "Settings"
-label_settings = ExtResource("9_e7jlu")
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
 
-[node name="ExitSettingsButton" type="Button" parent="SettingsPanel"]
-layout_mode = 0
-offset_left = 360.0
-offset_top = 280.0
-offset_right = 406.0
-offset_bottom = 311.0
-text = "Back"
-script = SubResource("GDScript_owij1")
+[node name="BodyColorRect" type="ColorRect" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
 
-[node name="Label2" type="Label" parent="SettingsPanel"]
-layout_mode = 0
-offset_left = 336.0
-offset_top = 144.0
-offset_right = 440.0
-offset_bottom = 167.0
-text = "Nothing yet..."
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="AboutPanel" type="Panel" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 70
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="HSeparator" type="HSeparator" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FullscreenSettingBoxContainer" type="BoxContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+vertical = true
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/FullscreenSettingBoxContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/FullscreenSettingBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("12_7b55j")
+text = "Full Screen"
+scroll_active = false
+
+[node name="CenterContainer" type="CenterContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/FullscreenSettingBoxContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FullscreenSettingCheckButton" type="CheckButton" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/FullscreenSettingBoxContainer/BoxContainer/CenterContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_5pajh")
+
+[node name="HSeparator" type="HSeparator" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/FullscreenSettingBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="FooterColorRect" type="ColorRect" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" type="Button" parent="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vr8o3")
+text = "BACK"
+
+[node name="AboutMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
 unique_name_in_owner = true
 visible = false
-layout_mode = 0
-offset_left = 128.0
-offset_top = 168.0
-offset_right = 896.0
-offset_bottom = 488.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("16_5pajh")
 
-[node name="Label" type="Label" parent="AboutPanel"]
-layout_mode = 0
-offset_left = 340.0
-offset_top = 24.0
-offset_right = 429.0
-offset_bottom = 71.0
+[node name="BackdropColorRect" type="ColorRect" parent="BackgroundColorRect/AboutMarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/AboutMarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 30
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="HeaderColorRect" type="ColorRect" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+color = Color(0.392157, 0.709804, 0.964706, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/HeaderColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/HeaderColorRect/MarginContainer"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("4_j7ex8")
+theme_override_fonts/bold_font = ExtResource("6_m8ng4")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
+bbcode_enabled = true
 text = "About"
-label_settings = ExtResource("9_e7jlu")
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="AboutPanel"]
-layout_mode = 0
-offset_left = 224.0
-offset_top = 88.0
-offset_right = 560.0
-offset_bottom = 162.0
+[node name="BodyColorRect" type="ColorRect" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 70
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 70
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_j7ex8")
+theme_override_fonts/bold_font = ExtResource("6_m8ng4")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_font_sizes/bold_font_size = 30
 bbcode_enabled = true
 text = "Hardware Tycoon for Godot 4 is an open source recreation of the original Hardware Tycoon by Haxor1337."
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Button" type="Button" parent="AboutPanel"]
-layout_mode = 0
-offset_left = 360.0
-offset_top = 272.0
-offset_right = 405.0
-offset_bottom = 303.0
-text = "Back"
+[node name="FooterColorRect" type="ColorRect" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
 
-[node name="FullscreenButton" type="TextureButton" parent="."]
-layout_mode = 0
-offset_left = 944.0
-offset_top = 496.0
-offset_right = 1016.0
-offset_bottom = 568.0
-texture_normal = ExtResource("10_oy37t")
-texture_pressed = ExtResource("10_oy37t")
-texture_hover = ExtResource("10_oy37t")
-stretch_mode = 0
-script = SubResource("GDScript_0dhct")
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[connection signal="pressed" from="MainPanel/ButtonPanel/NewGameButton" to="MainPanel/ButtonPanel" method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="MainPanel/ButtonPanel/LoadGameButton" to="MainPanel/ButtonPanel" method="_on_load_game_button_pressed"]
-[connection signal="pressed" from="MainPanel/ButtonPanel/SettingsButton" to="MainPanel/ButtonPanel" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="MainPanel/ButtonPanel/AboutButton" to="MainPanel/ButtonPanel" method="_on_about_button_pressed"]
-[connection signal="pressed" from="AboutPanel/Button" to="MainPanel/ButtonPanel" method="_on_about_button_pressed"]
-[connection signal="pressed" from="FullscreenButton" to="." method="_on_fullscreen_button_pressed"]
-[connection signal="toggled" from="FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="BackButton" type="Button" parent="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_vr8o3")
+text = "BACK"
+
+[connection signal="pressed" from="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/MainMenuMarginContainer/MenuMarginContainer/BoxContainer/AboutButton" to="." method="_on_about_button_pressed"]
+[connection signal="toggled" from="BackgroundColorRect/MainMenuMarginContainer/ButtonMarginContainer/BoxContainer/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="text_changed" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/CompanyBoxContainer/CompanyLineEdit" to="BackgroundColorRect/NewGameMarginContainer" method="_on_company_line_edit_text_changed"]
+[connection signal="text_changed" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer/BoxContainer/FirstNameLineEdit" to="BackgroundColorRect/NewGameMarginContainer" method="_on_first_name_line_edit_text_changed"]
+[connection signal="text_changed" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/NameBoxContainer/FounderBoxContainer/BoxContainer/LastNameLineEdit" to="BackgroundColorRect/NewGameMarginContainer" method="_on_last_name_line_edit_text_changed"]
+[connection signal="pressed" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/BoxContainer/LogoMarginContainer/RichTextLabel/LogoButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_logo_button_pressed"]
+[connection signal="toggled" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer/EasyButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_easy_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer/NormalButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_normal_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer/HardButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_hard_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/DifficultyMarginContainer/BoxContainer/VeryHardButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_very_hard_button_toggled"]
+[connection signal="pressed" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer/BackButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer/DoneButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_done_button_pressed"]
+[connection signal="toggled" from="BackgroundColorRect/NewGameMarginContainer/MarginContainer/MarginContainer/MarginContainer/GameSettingsTextureButton" to="BackgroundColorRect/NewGameMarginContainer" method="_on_game_settings_texture_button_toggled"]
+[connection signal="pressed" from="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/FullscreenSettingBoxContainer/BoxContainer/CenterContainer/FullscreenSettingCheckButton" to="BackgroundColorRect/SettingsMarginContainer" method="_on_fullscreen_setting_check_button_pressed"]
+[connection signal="toggled" from="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/BoxContainer/FullscreenSettingBoxContainer/BoxContainer/CenterContainer/FullscreenSettingCheckButton" to="BackgroundColorRect/SettingsMarginContainer" method="_on_fullscreen_setting_check_button_toggled"]
+[connection signal="pressed" from="BackgroundColorRect/SettingsMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer/BackButton" to="BackgroundColorRect/SettingsMarginContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/AboutMarginContainer/MarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BoxContainer/BackButton" to="BackgroundColorRect/AboutMarginContainer" method="_on_back_button_pressed"]

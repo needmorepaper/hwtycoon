@@ -10,20 +10,17 @@ config_version=5
 
 [application]
 
-config/name="Hardware Tycoon (godot)"
+config/name="Hardware Tycoon for Godot 4"
 config/version="0"
-run/main_scene="res://scenes/loading_screen.tscn"
+run/main_scene="uid://4ryxghobxo65"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="hwtycoon"
-config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/bg_color=Color(0.392157, 0.709804, 0.964706, 1)
-boot_splash/image="res://resources/imported_resources/load_back-sheet0.png"
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Global="*res://scripts/autoload/global.gd"
-PlayerCompany="*res://scripts/autoload/player_company.gd"
 
 [display]
 
@@ -31,6 +28,7 @@ window/size/viewport_width=1024
 window/size/viewport_height=576
 window/size/initial_position_type=3
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [filesystem]
 

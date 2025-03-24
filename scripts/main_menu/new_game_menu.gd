@@ -84,7 +84,7 @@ func _on_done_button_pressed():
 	player_company.difficulty = game_difficulty
 	
 	Global.player_company = player_company
-	Global.load_scene("res://scenes/main_play.tscn")
+	Global.load_scene("res://scenes/gameplay.tscn")
 
 
 func _on_back_button_pressed():

@@ -251,7 +251,7 @@ theme_override_constants/margin_top = 350
 [node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/GarageMarginContainer"]
 layout_mode = 2
 
-[node name="Garage" type="TextureRect" parent="BackgroundColorRect/GarageMarginContainer/MarginContainer"]
+[node name="GarageTextureRect" type="TextureRect" parent="BackgroundColorRect/GarageMarginContainer/MarginContainer"]
 custom_minimum_size = Vector2(265, 265)
 layout_mode = 2
 texture = ExtResource("3_7phob")

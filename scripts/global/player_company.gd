@@ -12,9 +12,12 @@ enum Difficulty {EASY, NORMAL, HARD, VERY_HARD}
 
 # values generated on new game
 @export var popularity: float = 1.0 ## The company's reputation in the form 5.0%. Shouldn't exceed 100.0%
+@export var starting_date_time: Dictionary = {day = 1, month = 1, year = 1970} ## The game's starting day, month and year. Each value must be >= 1. NOTE: Probably wants to be set by some new game setting.
+@export var days_elapsed: float = 0 ## The total days elapsed. D0/M0/Y0000 == 0 days.
+@export var monthly_rent: float = 450 ## Monthly rent of $450.
 
 # values generated on new game and affected by difficulty
-@export var profit: int ## The company's cash in the form $10
+@export var profit: float ## The company's cash in the form $10
 @export var sale_multiplier: float
 @export var cpu_score_multiplier: float
 @export var research_cost_multiplier: float

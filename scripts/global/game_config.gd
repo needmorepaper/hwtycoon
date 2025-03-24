@@ -11,7 +11,6 @@ var game_config = ConfigFile.new()
 # TODO: Move default settings to a default_settings config file.
 
 
-
 @export_category("Audio Settings") # Audio Settings
 
 @export var music_volume: float = 0.95: ## Music volume

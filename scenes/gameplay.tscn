@@ -1,0 +1,393 @@
+[gd_scene load_steps=34 format=3 uid="uid://lxoexalxabme"]
+
+[ext_resource type="Script" uid="uid://dbthdbrlnbdt" path="res://scripts/gameplay/gameplay.gd" id="1_bhmdk"]
+[ext_resource type="Texture2D" uid="uid://reywphfca0dl" path="res://resources/imported_resources/room1-sheet0.png" id="2_s5y6v"]
+[ext_resource type="BitMap" uid="uid://bw56j2fa35q3q" path="res://resources/imported_resources/room1-sheet1.png" id="3_m6b5a"]
+[ext_resource type="Texture2D" uid="uid://xyekt56egse2" path="res://resources/imported_resources/ui_menu-sheet1.png" id="4_pv71h"]
+[ext_resource type="Texture2D" uid="uid://bk24f04g6cvu7" path="res://resources/imported_resources/ui_time1-sheet1.png" id="5_407ns"]
+[ext_resource type="Texture2D" uid="uid://chuk2u1yv7oh5" path="res://resources/imported_resources/ui_time1-sheet0.png" id="5_pv71h"]
+[ext_resource type="Texture2D" uid="uid://dfn64qlpfvxti" path="res://resources/imported_resources/menu_resume-sheet1.png" id="6_525vb"]
+[ext_resource type="Texture2D" uid="uid://falbe4xp6nd5" path="res://resources/imported_resources/ui_time2-sheet0.png" id="6_m6b5a"]
+[ext_resource type="Script" uid="uid://bg7hhdlo58tkf" path="res://scripts/gameplay/pause_menu.gd" id="6_srvxn"]
+[ext_resource type="Texture2D" uid="uid://m572drpysk8o" path="res://resources/imported_resources/menu_resume-sheet2.png" id="7_25e7j"]
+[ext_resource type="Texture2D" uid="uid://dej5747gy73bf" path="res://resources/imported_resources/ui_time3-sheet0.png" id="7_mesn4"]
+[ext_resource type="Texture2D" uid="uid://sbg7hhu53faw" path="res://resources/imported_resources/ui_time2-sheet1.png" id="7_pv71h"]
+[ext_resource type="Texture2D" uid="uid://ds1jjm3kpnpi5" path="res://resources/imported_resources/menu_resume-sheet0.png" id="8_t4x03"]
+[ext_resource type="Texture2D" uid="uid://dsdyp1sjxdd26" path="res://resources/imported_resources/ui_time0-sheet0.png" id="9_25e7j"]
+[ext_resource type="Texture2D" uid="uid://dnxd8x041iqiv" path="res://resources/imported_resources/ui_time3-sheet1.png" id="9_m6b5a"]
+[ext_resource type="Texture2D" uid="uid://flykm6buq7of" path="res://resources/imported_resources/menu_save-sheet1.png" id="9_rqnht"]
+[ext_resource type="Texture2D" uid="uid://buqltxi6e8nko" path="res://resources/imported_resources/ui_time0-sheet1.png" id="9_w3w6i"]
+[ext_resource type="Texture2D" uid="uid://dy76qyoocndgi" path="res://resources/imported_resources/menu_save-sheet2.png" id="10_srvxn"]
+[ext_resource type="FontFile" uid="uid://ces8cy0k1egmf" path="res://resources/font/lato-bold-webfont.ttf" id="10_t4x03"]
+[ext_resource type="Texture2D" uid="uid://c0e0qjjsoahay" path="res://resources/imported_resources/menu_save-sheet0.png" id="11_sqtar"]
+[ext_resource type="Texture2D" uid="uid://bsfaista1bu70" path="res://resources/imported_resources/menu_load-sheet1.png" id="12_67d6o"]
+[ext_resource type="Texture2D" uid="uid://2fr3h3yoybfr" path="res://resources/imported_resources/menu_exit-sheet0.png" id="12_cuhxg"]
+[ext_resource type="Texture2D" uid="uid://rdwdw6viqd68" path="res://resources/imported_resources/menu_load-sheet2.png" id="13_5vu4g"]
+[ext_resource type="Script" uid="uid://chdmyxr24ejdb" path="res://scripts/gameplay/dropdown.gd" id="13_mesn4"]
+[ext_resource type="Texture2D" uid="uid://c28qcqdrjup20" path="res://resources/imported_resources/ui_menu-sheet0.png" id="13_vrqbj"]
+[ext_resource type="PackedScene" uid="uid://6l6fkgpwc68x" path="res://scenes/ui/hardware_development.tscn" id="14_gm2mb"]
+[ext_resource type="Texture2D" uid="uid://sddduki3drm5" path="res://resources/imported_resources/menu_load-sheet0.png" id="14_s6y8e"]
+[ext_resource type="Texture2D" uid="uid://bd8byy1gqps6f" path="res://resources/imported_resources/menu_options-sheet1.png" id="15_s1tv7"]
+[ext_resource type="Texture2D" uid="uid://cim57se6n06wu" path="res://resources/imported_resources/menu_options-sheet2.png" id="16_37dvx"]
+[ext_resource type="Texture2D" uid="uid://ctc4aid7ei8cc" path="res://resources/imported_resources/menu_options-sheet0.png" id="17_p5dy6"]
+[ext_resource type="Texture2D" uid="uid://dw3fv8cmmvovh" path="res://resources/imported_resources/menu_exit-sheet1.png" id="18_o7tkd"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_81iov"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_pv71h"]
+
+[node name="Gameplay" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bhmdk")
+
+[node name="BackgroundColorRect" type="ColorRect" parent="."]
+layout_mode = 2
+color = Color(0.580392, 0.780392, 0.921569, 1)
+
+[node name="BackgroundButton" type="Button" parent="BackgroundColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="OfficeMarginContainer" type="MarginContainer" parent="BackgroundColorRect/BackgroundButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 10
+
+[node name="OfficeTextureButton" type="TextureButton" parent="BackgroundColorRect/BackgroundButton/OfficeMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture_normal = ExtResource("2_s5y6v")
+texture_click_mask = ExtResource("3_m6b5a")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="PauseMenuButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -39.0
+offset_right = 39.0
+grow_vertical = 0
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="PauseMenuButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuButtonMarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_pv71h")
+texture_hover = ExtResource("13_vrqbj")
+
+[node name="PauseMenuMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_srvxn")
+
+[node name="BackdropColorRect" type="ColorRect" parent="BackgroundColorRect/PauseMenuMarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0.129412, 0.588235, 0.952941, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ResumeMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="ResumeTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/ResumeMarginContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_81iov")
+texture_normal = ExtResource("6_525vb")
+texture_pressed = ExtResource("7_25e7j")
+texture_hover = ExtResource("8_t4x03")
+stretch_mode = 5
+
+[node name="SaveMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="SaveTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SaveMarginContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_81iov")
+texture_normal = ExtResource("9_rqnht")
+texture_pressed = ExtResource("10_srvxn")
+texture_hover = ExtResource("11_sqtar")
+stretch_mode = 5
+
+[node name="LoadMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="LoadTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/LoadMarginContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_81iov")
+texture_normal = ExtResource("12_67d6o")
+texture_pressed = ExtResource("13_5vu4g")
+texture_hover = ExtResource("14_s6y8e")
+stretch_mode = 5
+
+[node name="SettingsMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="SettingsTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SettingsMarginContainer"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_81iov")
+texture_normal = ExtResource("15_s1tv7")
+texture_pressed = ExtResource("16_37dvx")
+texture_hover = ExtResource("17_p5dy6")
+stretch_mode = 5
+
+[node name="ExitMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -124.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="ExitTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/ExitMarginContainer"]
+layout_mode = 2
+texture_normal = ExtResource("18_o7tkd")
+texture_hover = ExtResource("12_cuhxg")
+stretch_mode = 5
+
+[node name="HeaderMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 60.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColorRect/HeaderMarginContainer"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+size_flags_vertical = 0
+color = Color(0.129412, 0.588235, 0.952941, 1)
+
+[node name="TimeMarginContainer" type="MarginContainer" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 159.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 2
+vertical = true
+
+[node name="DateRichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_fonts/normal_font = ExtResource("10_t4x03")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "D1/M1/Y1970"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeButtonsBoxContainer" type="BoxContainer" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="Speed1TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_pv71h")
+texture_normal = ExtResource("5_pv71h")
+texture_pressed = ExtResource("5_407ns")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Speed2TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+custom_minimum_size = Vector2(24, 20)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_pv71h")
+texture_normal = ExtResource("6_m6b5a")
+texture_pressed = ExtResource("7_pv71h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Speed3TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+custom_minimum_size = Vector2(32, 20)
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_pv71h")
+texture_normal = ExtResource("7_mesn4")
+texture_pressed = ExtResource("9_m6b5a")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Speed0TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_pv71h")
+texture_normal = ExtResource("9_25e7j")
+texture_pressed = ExtResource("9_w3w6i")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="TaskBoxContainer" type="BoxContainer" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StatsMarginContainer" type="MarginContainer" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/StatsMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -5
+vertical = true
+
+[node name="ProfitRichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/StatsMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/normal_font = ExtResource("10_t4x03")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "$200.00k"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PopularityRichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/StatsMarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/normal_font = ExtResource("10_t4x03")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "Popularity: 1.22%"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DropdownMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 512.0
+offset_top = 288.0
+offset_right = 552.0
+offset_bottom = 328.0
+script = ExtResource("13_mesn4")
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColorRect/DropdownMarginContainer"]
+layout_mode = 2
+color = Color(0.352941, 0.690196, 0.964706, 1)
+
+[node name="DropdownBoxContainer" type="BoxContainer" parent="BackgroundColorRect/DropdownMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="To Be Overhauled" type="ColorRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+color = Color(0.207843, 0.207843, 0.207843, 0.658824)
+
+[node name="HardwareDevelopment" parent="To Be Overhauled" instance=ExtResource("14_gm2mb")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_left = 192.0
+offset_top = 68.0
+offset_right = 192.0
+offset_bottom = 68.0
+
+[connection signal="pressed" from="BackgroundColorRect/BackgroundButton" to="." method="_on_background_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/BackgroundButton/OfficeMarginContainer/OfficeTextureButton" to="." method="_on_office_texture_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/PauseMenuButtonMarginContainer/PauseMenuButton" to="." method="_on_pause_menu_button_pressed"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/ResumeMarginContainer/ResumeTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_resume_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SaveMarginContainer/SaveTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_save_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/LoadMarginContainer/LoadTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_load_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SettingsMarginContainer/SettingsTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_settings_texture_button_toggled"]
+[connection signal="pressed" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/ExitMarginContainer/ExitTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_exit_texture_button_pressed"]
+[connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed1TextureButton" to="." method="_on_speed_1_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed2TextureButton" to="." method="_on_speed_2_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed3TextureButton" to="." method="_on_speed_3_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed0TextureButton" to="." method="_on_speed_0_texture_button_toggled"]

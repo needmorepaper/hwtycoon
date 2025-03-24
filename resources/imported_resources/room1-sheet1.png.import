@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bw56j2fa35q3q"
+path="res://.godot/imported/room1-sheet1.png-3eea7e345b546a68d6852c8234e676aa.res"
+
+[deps]
+
+source_file="res://resources/imported_resources/room1-sheet1.png"
+dest_files=["res://.godot/imported/room1-sheet1.png-3eea7e345b546a68d6852c8234e676aa.res"]
+
+[params]
+
+create_from=0
+threshold=0.0

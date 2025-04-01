@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://wxkkbod6018q"]
+
+[ext_resource type="Texture2D" uid="uid://vk5vyae4yroi" path="res://resources/imported_resources/hardw_cpu-sheet0.png" id="1_4v2a2"]
+[ext_resource type="Script" uid="uid://cys2ow3ogbgwq" path="res://scripts/gameplay/new_hardware/select_hardware_button.gd" id="1_cm1kh"]
+[ext_resource type="Texture2D" uid="uid://balnynnewqbc8" path="res://resources/imported_resources/hardw_cpu-sheet1.png" id="2_cm1kh"]
+[ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="3_v5ai3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7tkd"]
+bg_color = Color(0.8, 0.8, 0.8, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81iov"]
+bg_color = Color(0.545098, 0.764706, 0.290196, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="CPUMarginContainer" type="MarginContainer"]
+script = ExtResource("1_cm1kh")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+vertical = true
+
+[node name="TextureButton" type="TextureButton" parent="BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+texture_normal = ExtResource("1_4v2a2")
+texture_hover = ExtResource("2_cm1kh")
+stretch_mode = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("3_v5ai3")
+theme_override_font_sizes/normal_font_size = 16
+text = "CPU | lv. 0"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="BoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 8)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_o7tkd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_81iov")
+value = 75.0
+show_percentage = false

@@ -3,29 +3,28 @@ extends MarginContainer
 @onready var gameplay: Gameplay = get_tree().current_scene
 @onready var dropdown_button = preload("res://scenes/gameplay/dropdown_button.tscn")
 
-class Screen: ## A class to describe all dropdown-able screens
-	var button_text: String
-	var unlocked: bool
-	var screen: Gameplay.Screen
-	
-	func _init(_button_text: String = "Unnamed Button", _unlocked: bool = false, _screen: Gameplay.Screen = Gameplay.Screen.OFFICE):
-		button_text = _button_text
-		unlocked = _unlocked
-		screen = _screen
-
-## Array of Screens the dropdown can display
-var Screens: Array[Screen] = [Screen.new("Locked Button", false),Screen.new("Unlocked Button", true, Gameplay.Screen.PAUSE_MENU),Screen.new("Unlocked Button 2", true),Screen.new("Unlocked Button 3", true),Screen.new("Unlocked Button 4", true)]
-
 func update_dropdown_list(): ## Updates the dropdown list
-	for child in %DropdownBoxContainer.get_children():
+	var button_count = 0
+	
+	for child in %DropdownBoxContainer.get_children(): # Clear the list.
 		%DropdownBoxContainer.remove_child(child)
-	for screen in Screens:
+	
+	for key in gameplay.Screens: # Populate the list with buttons for unlocked screens
+		var screen: Classes.Screen = gameplay.Screens[key]
 		if (screen.unlocked):
+			button_count += 1
 			var button: DropdownButton = dropdown_button.instantiate()
+			
 			button.text = screen.button_text
-			button.screen = screen.screen
+			button.screen = screen
+			
 			%DropdownBoxContainer.add_child(button)
+	return button_count
 
+## Shows the dropdown menu if the menu has buttons to show.
 func show_dropdown():
-	update_dropdown_list()
-	self.visible = true
+	if (update_dropdown_list() > 0):
+		self.position = get_viewport().get_mouse_position()
+		self.visible = true
+	else:
+		gameplay.active_screen = gameplay.Screens.OFFICE

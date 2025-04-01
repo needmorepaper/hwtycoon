@@ -10,50 +10,99 @@ var finances: Classes.Finances = Classes.Finances.new()
 
 var product: Classes.Product
 
-enum GameSpeed {PAUSED, NORMAL, FAST, FASTER}
+enum GameSpeed {UNPAUSED, PAUSED, NORMAL, FAST, FASTER}
 
-var game_speed_previous: GameSpeed
-var game_speed: GameSpeed:
+var selected_game_speed: GameSpeed: ## Used by the player to set the game_speed.
 	set(value):
-		if (game_speed != null):
-			game_speed_previous = game_speed
+		selected_game_speed = value
+		game_speed = value
+
+var game_speed: GameSpeed: ## Used by gameplay to set the game_speed.
+	set(value):
+		if (value == GameSpeed.UNPAUSED):
+			value = selected_game_speed
+		game_speed = value
 		match value:
 			GameSpeed.PAUSED:
+				%Speed0TextureButton.set_pressed_no_signal(true)
+				%Speed1TextureButton.set_pressed_no_signal(false)
+				%Speed2TextureButton.set_pressed_no_signal(false)
+				%Speed3TextureButton.set_pressed_no_signal(false)
 				timer.paused = true
 			GameSpeed.NORMAL:
+				%Speed0TextureButton.set_pressed_no_signal(false)
+				%Speed1TextureButton.set_pressed_no_signal(true)
+				%Speed2TextureButton.set_pressed_no_signal(false)
+				%Speed3TextureButton.set_pressed_no_signal(false)
 				timer.set_wait_time(tick / 1)
 				timer.paused = false
 			GameSpeed.FAST:
+				%Speed0TextureButton.set_pressed_no_signal(false)
+				%Speed1TextureButton.set_pressed_no_signal(false)
+				%Speed2TextureButton.set_pressed_no_signal(true)
+				%Speed3TextureButton.set_pressed_no_signal(false)
 				timer.set_wait_time(tick / 2.5)
 				timer.paused = false
 			GameSpeed.FASTER:
+				%Speed0TextureButton.set_pressed_no_signal(false)
+				%Speed1TextureButton.set_pressed_no_signal(false)
+				%Speed2TextureButton.set_pressed_no_signal(false)
+				%Speed3TextureButton.set_pressed_no_signal(true)
 				timer.set_wait_time(tick / 5)
 				timer.paused = false
 
-enum Screen {OFFICE, PAUSE_MENU, DROP_DOWN ,NEW_HARDWARE, RESEARCH, MARKET, BANK}
+var Screens: Dictionary = {
+	OFFICE = Classes.Screen.new("OFFICE", false, false),
+	PAUSE_MENU = Classes.Screen.new("PAUSE_MENU", false, false),
+	DROP_DOWN = Classes.Screen.new("DROP_DOWN", false, false),
+	NEW_HARDWARE = Classes.Screen.new("New Hardware", true, true),
+	RESEARCH = Classes.Screen.new("R&D", true, false),
+	PRODUCTS = Classes.Screen.new("Products", true, false),
+	COMPANIES = Classes.Screen.new("Companies", true, false),
+	MILESTONES = Classes.Screen.new("Milestones", true, false),
+	MARKET = Classes.Screen.new("Market", true, false),
+	BANK = Classes.Screen.new("Bank", true, false)
+	}
 
-var active_screen: Screen:
+var active_screen: Classes.Screen:
 	set(value):
 		active_screen = value
 		match value:
-			Screen.OFFICE:
+			Screens.OFFICE:
+				game_speed = GameSpeed.UNPAUSED
+				%PauseMenuButtonMarginContainer.visible = true
 				%PauseMenuMarginContainer.visible = false
 				%DropdownMarginContainer.visible = false
-			Screen.PAUSE_MENU:
-				%PauseMenuMarginContainer.visible = true
+				%NewHardwareMarginContainer.visible = false
+			Screens.PAUSE_MENU:
+				game_speed = GameSpeed.PAUSED
+				%PauseMenuButtonMarginContainer.visible = false
+				%PauseMenuMarginContainer.show_pause_menu()
 				%DropdownMarginContainer.visible = false
-			Screen.DROP_DOWN:
+				%NewHardwareMarginContainer.visible = false
+			Screens.DROP_DOWN:
+				game_speed = GameSpeed.PAUSED
+				%PauseMenuButtonMarginContainer.visible = true
 				%PauseMenuMarginContainer.visible = false
-				%DropdownMarginContainer.position = get_viewport().get_mouse_position()
 				%DropdownMarginContainer.show_dropdown()
-			Screen.NEW_HARDWARE: # TODO: Define Screen.NEW_HARDWARE
+				%NewHardwareMarginContainer.visible = false
+			Screens.NEW_HARDWARE: # TODO: Define Screen.NEW_HARDWARE
+				game_speed = GameSpeed.PAUSED
+				%PauseMenuButtonMarginContainer.visible = false
+				%PauseMenuMarginContainer.visible = false
+				%DropdownMarginContainer.visible = false
+				%NewHardwareMarginContainer.show_new_hardware()
+			Screens.RESEARCH: # TODO: Define Screen.RESEARCH
 				pass
-			Screen.RESEARCH: # TODO: Define Screen.RESEARCH
+			Screens.MARKET: # TODO: Define Screen.MARKET
 				pass
-			Screen.MARKET: # TODO: Define Screen.MARKET
+			Screens.BANK: # TODO: Define Screen.BANK
 				pass
-			Screen.BANK: # TODO: Define Screen.BANK
-				pass
+
+var Hardwares: Dictionary = {
+	CPU = Classes.Hardware.new("CPU", preload("res://resources/imported_resources/hardw_cpu-sheet0.png"), preload("res://resources/imported_resources/hardw_cpu-sheet1.png"), true),
+	GPU = Classes.Hardware.new("GPU", preload("res://resources/imported_resources/hardw_gpu-sheet0.png"), preload("res://resources/imported_resources/hardw_gpu-sheet1.png"), false)
+}
 
 func _ready():
 	date_time.count = date_time.dict_to_day_count(Global.player_company.starting_date_time)
@@ -64,9 +113,9 @@ func _ready():
 	date_time.month_incremented.connect(_on_month_incremented)
 	date_time.year_incremented.connect(_on_year_incremented)
 	
-	game_speed = GameSpeed.PAUSED
+	selected_game_speed = GameSpeed.PAUSED
 	
-	active_screen = Screen.OFFICE
+	active_screen = Screens.OFFICE
 	
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
@@ -118,31 +167,31 @@ func _on_timer_timeout():
 
 func _on_speed_0_texture_button_toggled(toggled_on):
 	if (toggled_on):
-		game_speed = GameSpeed.PAUSED
+		selected_game_speed = GameSpeed.PAUSED
 
 func _on_speed_1_texture_button_toggled(toggled_on):
 	if (toggled_on):
-		game_speed = GameSpeed.NORMAL
+		selected_game_speed = GameSpeed.NORMAL
 
 func _on_speed_2_texture_button_toggled(toggled_on):
 	if (toggled_on):
-		game_speed = GameSpeed.FAST
+		selected_game_speed = GameSpeed.FAST
 
 func _on_speed_3_texture_button_toggled(toggled_on):
 	if (toggled_on):
-		game_speed = GameSpeed.FASTER
+		selected_game_speed = GameSpeed.FASTER
 
 func _on_office_texture_button_pressed():
-	# Switch to Screen.DROP_DOWN
-	if (active_screen == Screen.OFFICE):
-		active_screen = Screen.DROP_DOWN
-	elif (active_screen == Screen.DROP_DOWN):
-		active_screen = Screen.OFFICE
+	# Switch to Screens.DROP_DOWN
+	if (active_screen == Screens.OFFICE):
+		active_screen = Screens.DROP_DOWN
+	elif (active_screen == Screens.DROP_DOWN):
+		active_screen = Screens.OFFICE
 
 func _on_background_button_pressed():
-	if (active_screen == Screen.DROP_DOWN):
-		active_screen = Screen.OFFICE
+	if (active_screen == Screens.DROP_DOWN):
+		active_screen = Screens.OFFICE
 
 func _on_pause_menu_button_pressed():
 	game_speed = GameSpeed.PAUSED
-	active_screen = Screen.PAUSE_MENU
+	active_screen = Screens.PAUSE_MENU

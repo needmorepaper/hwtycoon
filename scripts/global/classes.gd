@@ -1,5 +1,33 @@
 class_name Classes extends Node
 
+## This class describes all gameplay screens
+class Screen:
+	var button_text: String
+	var dropdown_able: bool
+	var unlocked: bool ## If an unlocked Screen is dropdown_able it will be shown in the dropdown menu.
+	
+	func _init(_button_text: String = "Unnamed Button", _dropdown_able: bool = false, _unlocked: bool = false):
+		button_text = _button_text
+		dropdown_able = _dropdown_able
+		unlocked = _unlocked
+
+## This class describes all types of hardware
+class Hardware:
+	var button_text: String
+	var button_texture_normal: Texture2D
+	var button_texture_hover: Texture2D
+	var unlocked: bool
+	
+	# calculated during gameplay
+	var level: int = 0
+	var level_progress: float = 0.0
+	
+	func _init(_button_text: String = "Unnamed Hardware", _button_texture_normal: Texture2D = Texture2D.new(), _button_texture_hover: Texture2D = Texture2D.new(), _unlocked: bool = false):
+		button_text = _button_text
+		button_texture_normal = _button_texture_normal
+		button_texture_hover = _button_texture_hover
+		unlocked = _unlocked
+
 ## This class manages the flow of time in Gameplay,
 class DateTime:
 	const days_in_year: float = 360  # NOTE: original game's year only had 360 days

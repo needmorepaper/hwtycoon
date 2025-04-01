@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://lxoexalxabme"]
+[gd_scene load_steps=44 format=3 uid="uid://lxoexalxabme"]
 
 [ext_resource type="Script" uid="uid://dbthdbrlnbdt" path="res://scripts/gameplay/gameplay.gd" id="1_bhmdk"]
 [ext_resource type="Texture2D" uid="uid://reywphfca0dl" path="res://resources/imported_resources/room1-sheet0.png" id="2_s5y6v"]
@@ -31,8 +31,41 @@
 [ext_resource type="Texture2D" uid="uid://cim57se6n06wu" path="res://resources/imported_resources/menu_options-sheet2.png" id="16_37dvx"]
 [ext_resource type="Texture2D" uid="uid://ctc4aid7ei8cc" path="res://resources/imported_resources/menu_options-sheet0.png" id="17_p5dy6"]
 [ext_resource type="Texture2D" uid="uid://dw3fv8cmmvovh" path="res://resources/imported_resources/menu_exit-sheet1.png" id="18_o7tkd"]
+[ext_resource type="Script" uid="uid://ccm3hb2gof7k4" path="res://scripts/gameplay/new_hardware.gd" id="21_5vu4g"]
+[ext_resource type="Texture2D" uid="uid://dmmys4x51jukd" path="res://resources/imported_resources/hardw_x-sheet0.png" id="22_5vu4g"]
+[ext_resource type="Script" uid="uid://cndmk2nyclrpj" path="res://scripts/gameplay/new_hardware/select_hardware.gd" id="22_s1tv7"]
+[ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="22_s6y8e"]
+[ext_resource type="StyleBox" uid="uid://cgpby2hajjqae" path="res://resources/Styles/Button/No_Focus.stylebox" id="23_37dvx"]
+[ext_resource type="PackedScene" uid="uid://wxkkbod6018q" path="res://scenes/gameplay/select_hardware_button.tscn" id="27_s1tv7"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_81iov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6y8e"]
+bg_color = Color(1, 1, 1, 0.1)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s1tv7"]
+bg_color = Color(1, 1, 1, 0)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37dvx"]
+bg_color = Color(1, 1, 1, 0.2)
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="Theme" id="Theme_p5dy6"]
+Button/styles/focus = ExtResource("23_37dvx")
+Button/styles/hover = SubResource("StyleBoxFlat_s6y8e")
+Button/styles/normal = SubResource("StyleBoxFlat_s1tv7")
+Button/styles/pressed = SubResource("StyleBoxFlat_37dvx")
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_pv71h"]
 
@@ -76,6 +109,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="PauseMenuButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -132,6 +166,7 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
 [node name="ResumeTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/ResumeMarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_81iov")
@@ -146,6 +181,7 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
 [node name="SaveTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SaveMarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_81iov")
@@ -160,6 +196,7 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
 [node name="LoadTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/LoadMarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_81iov")
@@ -174,6 +211,7 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
 [node name="SettingsTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SettingsMarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_81iov")
@@ -195,10 +233,123 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
 [node name="ExitTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/ExitMarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("18_o7tkd")
 texture_hover = ExtResource("12_cuhxg")
 stretch_mode = 5
+
+[node name="NewHardwareMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("21_5vu4g")
+
+[node name="BackdropColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="SelectHardwareMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 30
+script = ExtResource("22_s1tv7")
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="HeaderColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+color = Color(0.392157, 0.709804, 0.964706, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="CloseButton" type="Button" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_p5dy6")
+icon = ExtResource("22_5vu4g")
+icon_alignment = 1
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/TitleMarginContainer"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("22_s6y8e")
+theme_override_fonts/bold_font = ExtResource("10_t4x03")
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+bbcode_enabled = true
+text = "Select Hardware"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="BodyColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 40
+
+[node name="SelectHardwareFlowContainer" type="FlowContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 30
+
+[node name="CPUMarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/SelectHardwareFlowContainer" instance=ExtResource("27_s1tv7")]
+layout_mode = 2
 
 [node name="HeaderMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
 layout_mode = 1
@@ -251,6 +402,7 @@ layout_mode = 2
 theme_override_constants/margin_left = 25
 
 [node name="Speed1TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 toggle_mode = true
@@ -261,6 +413,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Speed2TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(24, 20)
 layout_mode = 2
 toggle_mode = true
@@ -271,6 +424,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Speed3TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(32, 20)
 layout_mode = 2
 toggle_mode = true
@@ -281,6 +435,7 @@ ignore_texture_size = true
 stretch_mode = 5
 
 [node name="Speed0TextureButton" type="TextureButton" parent="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 toggle_mode = true
@@ -387,6 +542,7 @@ offset_bottom = 68.0
 [connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/LoadMarginContainer/LoadTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_load_texture_button_toggled"]
 [connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SettingsMarginContainer/SettingsTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_settings_texture_button_toggled"]
 [connection signal="pressed" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/ExitMarginContainer/ExitTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_exit_texture_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer/CloseButton" to="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer" method="_on_close_button_pressed"]
 [connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed1TextureButton" to="." method="_on_speed_1_texture_button_toggled"]
 [connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed2TextureButton" to="." method="_on_speed_2_texture_button_toggled"]
 [connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed3TextureButton" to="." method="_on_speed_3_texture_button_toggled"]

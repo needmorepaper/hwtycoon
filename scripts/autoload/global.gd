@@ -44,5 +44,5 @@ func _ready():
 	print("Hardware Tycoon for Godot 4")
 	add_child(game_config)
 	game_config.fullscreen_changed.connect(_on_game_config_fullscreen_changed)
-	dev_quick_load()
-	#call_deferred("load_scene",main_menu_scene) # WARNING: Temporarily replaced by dev_quick_load().
+	#dev_quick_load()
+	call_deferred("load_scene",main_menu_scene) # WARNING: Temporarily replaced by dev_quick_load().

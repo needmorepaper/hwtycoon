@@ -1,4 +1,5 @@
 extends MarginContainer
+## Pause menu controls
 
 @onready var gameplay: Gameplay = get_tree().current_scene
 
@@ -9,6 +10,7 @@ func show_pause_menu():
 	%LoadTextureButton.button_pressed = false
 	%SettingsTextureButton.button_pressed = false
 	%ExitTextureButton.button_pressed = false
+
 
 func _on_resume_texture_button_toggled(toggled_on):
 	if (toggled_on):

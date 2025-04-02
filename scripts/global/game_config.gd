@@ -8,11 +8,7 @@ signal fullscreen_changed
 var game_config = ConfigFile.new()
 
 
-# TODO: Move default settings to a default_settings config file.
-
-
 @export_category("Audio Settings") # Audio Settings
-
 @export var music_volume: float = 0.95: ## Music volume
 	set(value): 
 		game_config.set_value("Audio", "music_volume", value) # Update ConfigFile
@@ -27,7 +23,6 @@ var game_config = ConfigFile.new()
 
 
 @export_category("Display Settings") # Display Settings
-
 @export var fullscreen: bool = false: ## Fullscreen
 	set(value):
 		game_config.set_value("Display", "fullscreen", value) # Update ConfigFile
@@ -37,7 +32,6 @@ var game_config = ConfigFile.new()
 
 
 @export_category("Gameplay Settings") # Gameplay Settings
-
 @export var autosave: bool = true: ## Autosaves the current game every month
 	set(value):
 		game_config.set_value("Gameplay", "autosave", value) # Update ConfigFile
@@ -87,5 +81,6 @@ func _ready():
 		push_warning("game_config failed to load for unknown reason, initializing")
 		# TODO: Tell user their config's invalid and has been reset
 		# TODO: Check if there are alternate reasons for why a file doesn't load
+		game_config.save("user://gamesettings.cfg")
 		return
 	print("game_config loaded")

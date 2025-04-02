@@ -1,10 +1,10 @@
 [gd_scene load_steps=41 format=3 uid="uid://djpgwfhqbxfi2"]
 
 [ext_resource type="Script" uid="uid://dd8sttdr1qfj5" path="res://scripts/main_menu/main_menu.gd" id="1_1ajci"]
-[ext_resource type="Script" uid="uid://s7kmnaooblod" path="res://scripts/main_menu/TextureRect/texture_rect_mouse_offset.gd" id="2_1ajci"]
+[ext_resource type="Script" uid="uid://s7kmnaooblod" path="res://scripts/main_menu/texture_rect/texture_rect_mouse_offset.gd" id="2_1ajci"]
 [ext_resource type="Texture2D" uid="uid://c6428d1g4k4sy" path="res://resources/imported_resources/mm_cpu-sheet0.png" id="2_7b55j"]
 [ext_resource type="Theme" uid="uid://cw13xaerpch24" path="res://resources/theme/general.theme" id="2_e16di"]
-[ext_resource type="Script" uid="uid://ch71y4wslechh" path="res://scripts/main_menu/TextureRect/texture_rect_rotate.gd" id="3_5pajh"]
+[ext_resource type="Script" uid="uid://ch71y4wslechh" path="res://scripts/main_menu/texture_rect/texture_rect_rotate.gd" id="3_5pajh"]
 [ext_resource type="Texture2D" uid="uid://18jv701vii4t" path="res://resources/imported_resources/mm_garage-sheet0.png" id="3_7phob"]
 [ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="4_j7ex8"]
 [ext_resource type="FontFile" uid="uid://ces8cy0k1egmf" path="res://resources/font/lato-bold-webfont.ttf" id="6_m8ng4"]
@@ -279,7 +279,8 @@ layout_mode = 2
 
 [node name="IconMarginContainer" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer/BoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 25
+size_flags_vertical = 0
+theme_override_constants/margin_top = 15
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="BackgroundColorRect/MainMenuMarginContainer/TitleMarginContainer/BoxContainer/IconMarginContainer"]
 layout_mode = 2
@@ -369,6 +370,7 @@ theme = ExtResource("2_e16di")
 text = "About"
 
 [node name="ButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect/MainMenuMarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
@@ -388,7 +390,6 @@ stretch_mode = 0
 
 [node name="NewGameMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

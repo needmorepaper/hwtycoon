@@ -1,4 +1,5 @@
 class_name PlayerCompany extends Node
+## This class defines the player's company.
 
 enum Difficulty {EASY, NORMAL, HARD, VERY_HARD}
 

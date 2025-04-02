@@ -1,4 +1,5 @@
 extends MarginContainer
+## This script deals with the progress bar
 
 @onready var progress_bar = %ProgressBar
 var scene_path

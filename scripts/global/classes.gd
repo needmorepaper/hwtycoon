@@ -1,3 +1,5 @@
+## Various primitive classes
+## TODO: Split up once it gets too big?
 class_name Classes extends Node
 
 ## This class describes all gameplay screens
@@ -125,7 +127,11 @@ class Finances:
 			annual_expenses = value
 			annual_profit = annual_income - annual_expenses
 
-## This class defines a product INFO: Currently Product is Product.CPU TODO: Convert to Product.CPU NOTE: Should probably be moved to script defining all types of product. TODO: Move all gameplay code out of Product.
+## This class defines a product
+## INFO: Currently Product is Product.CPU
+## TODO: Convert to Product.CPU
+## NOTE: Should probably be moved to script defining all types of product.
+## TODO: Move all gameplay code out of Product.
 class Product:
 	# configurable
 	var retail_price: float = 50.00 ## The retail price for the product in the form $50.00
@@ -140,7 +146,8 @@ class Product:
 	#var stability: float # NOTE: WIP
 	#var build: float # NOTE: WIP
 	
-	# calculated TODO: calculate values
+	# calculated
+	## TODO: calculate values
 	var on_sale: bool = false
 	var product_release_day: float ## The DateTime.count the product was released. Sales will start that day.
 	var production_cost: float = 30.74 ## The cost to produce the product in the form $30.74
@@ -158,7 +165,9 @@ class Product:
 	
 	func _on_product_release_day(date_time: DateTime):
 		date_time.print_to_console("Product Released: %s %s" % [brand_name, design_name])
-	
-	func _on_weeks_since_product_release(date_time: DateTime): # TODO: add finance screen log_income or log_expenses BUG: if (product_release_day == Global.player_company.starting_date_time): The first report will happen one day after it should. I think this is because the first day doesn't get a .changed,.day_incremented,.month_incremented,.year_incremented This should probably be handeled in DateTime._init()
+
+	## TODO: add finance screen log_income or log_expenses
+	## BUG: if (product_release_day == Global.player_company.starting_date_time): The first report will happen one day after it should. I think this is because the first day doesn't get a .changed,.day_incremented,.month_incremented,.year_incremented This should probably be handeled in DateTime._init()
+	func _on_weeks_since_product_release(date_time: DateTime):
 		date_time.print_to_console("$%sk CPU Sales" % [snapped((((retail_price - production_cost)*weekly_sales)/1000.0),0.01)])
 		weekly_sales = 0

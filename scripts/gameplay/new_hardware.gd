@@ -4,7 +4,8 @@ class_name NewHardware extends MarginContainer
 
 enum Screen {SELECT_HARDWARE, SELECT_ARCHITECTURE, DESIGN}
 
-# A screen manager for new_hardware's Screens
+## A screen manager for new_hardware's Screens
+## TODO: Implement architecture and design screens
 var active_screen: Screen:
 	set(value):
 		active_screen = value
@@ -12,8 +13,10 @@ var active_screen: Screen:
 			Screen.SELECT_HARDWARE:
 				%SelectHardwareMarginContainer.show_select_hardware()
 			Screen.SELECT_ARCHITECTURE:
+				push_error("Not implemented")
 				%SelectHardwareMarginContainer.visible = false
 			Screen.DESIGN:
+				push_error("Not implemented")
 				%SelectHardwareMarginContainer.visible = false
 
 func show_new_hardware():

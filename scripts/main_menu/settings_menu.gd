@@ -1,4 +1,5 @@
 extends MarginContainer
+## This script handles the settings options
 
 @onready var main_menu: MainMenu = get_tree().current_scene
 

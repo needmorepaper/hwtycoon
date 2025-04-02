@@ -1,8 +1,11 @@
-class_name Gameplay extends MarginContainer ## TODO: This script is getting long. Should probably be split into different scripts. Gameplay and Gameplay_UI?
+class_name Gameplay extends MarginContainer 
+## TODO: This script is getting long. Should probably be split into different scripts. Gameplay and Gameplay_UI?
 
-const tick = 0.5 ## How long per day in seconds at game_speed 1
+## How long does each day take in seconds at 1x speed
+const tick = 0.5 
 
-var timer: Timer = Timer.new() # BUG: Initial delay after first game_speed change.
+# BUG: Initial delay after first game_speed change.
+var timer: Timer = Timer.new()
 
 var date_time: Classes.DateTime = Classes.DateTime.new()
 
@@ -12,12 +15,15 @@ var product: Classes.Product
 
 enum GameSpeed {UNPAUSED, PAUSED, NORMAL, FAST, FASTER}
 
-var selected_game_speed: GameSpeed: ## Used by the player to set the game_speed.
+## Used by the player to set the game_speed.
+var selected_game_speed: GameSpeed: 
 	set(value):
 		selected_game_speed = value
 		game_speed = value
 
-var game_speed: GameSpeed: ## Used by gameplay to set the game_speed.
+
+## Used by gameplay to set the game_speed.
+var game_speed: GameSpeed: 
 	set(value):
 		if (value == GameSpeed.UNPAUSED):
 			value = selected_game_speed
@@ -51,6 +57,8 @@ var game_speed: GameSpeed: ## Used by gameplay to set the game_speed.
 				timer.set_wait_time(tick / 5)
 				timer.paused = false
 
+
+## Dictionary of various gameplay screens
 var Screens: Dictionary = {
 	OFFICE = Classes.Screen.new("OFFICE", false, false),
 	PAUSE_MENU = Classes.Screen.new("PAUSE_MENU", false, false),
@@ -64,6 +72,8 @@ var Screens: Dictionary = {
 	BANK = Classes.Screen.new("Bank", true, false)
 	}
 
+
+## Defines the active screen
 var active_screen: Classes.Screen:
 	set(value):
 		active_screen = value
@@ -99,10 +109,19 @@ var active_screen: Classes.Screen:
 			Screens.BANK: # TODO: Define Screen.BANK
 				pass
 
+
+## Defines hardware types
 var Hardwares: Dictionary = {
-	CPU = Classes.Hardware.new("CPU", preload("res://resources/imported_resources/hardw_cpu-sheet0.png"), preload("res://resources/imported_resources/hardw_cpu-sheet1.png"), true),
-	GPU = Classes.Hardware.new("GPU", preload("res://resources/imported_resources/hardw_gpu-sheet0.png"), preload("res://resources/imported_resources/hardw_gpu-sheet1.png"), false)
+	CPU = Classes.Hardware.new("CPU", 
+		preload("res://resources/imported_resources/hardw_cpu-sheet0.png"), 
+		preload("res://resources/imported_resources/hardw_cpu-sheet1.png"), 
+		true),
+	GPU = Classes.Hardware.new("GPU", 
+		preload("res://resources/imported_resources/hardw_gpu-sheet0.png"), 
+		preload("res://resources/imported_resources/hardw_gpu-sheet1.png"), 
+		false)
 }
+
 
 func _ready():
 	date_time.count = date_time.dict_to_day_count(Global.player_company.starting_date_time)
@@ -122,14 +141,18 @@ func _ready():
 	timer.start()
 	
 	product = Classes.Product.new(date_time)
-	finances.expenses += product.design_cost # TODO: design_cost is logged in the finance screen as a total at the start of design, but is taken from balance monthly. design_cost_per_month = product.design_cost / (product.design_time / date_time.days_in_month)
+	# TODO: design_cost is logged in the finance screen as a total at the start of design, but is taken from balance monthly. design_cost_per_month = product.design_cost / (product.design_time / date_time.days_in_month)
+	finances.expenses += product.design_cost
+
 
 func _process(_delta):
 	%DateRichTextLabel.text = "%s" % [date_time.count_to_string()]
 	%ProfitRichTextLabel.text = "$%sk" % snapped((Global.player_company.profit/1000.1),0.01)
 
+
 func _on_date_time_changed(value):
 	Global.player_company.days_elapsed = value
+
 
 func _on_day_incremented(_day):
 	var weeks_since_sale: int = floor((date_time.count / 7) - (product.product_release_day / 7) + 1) # Add 1 to account for the Fencepost problem.
@@ -151,8 +174,10 @@ func _on_day_incremented(_day):
 			product.weekly_sales += number_of_sales
 			finances.expenses += profit_per_sale * number_of_sales
 
+
 func _on_month_incremented(_month):
 	finances.expenses += Global.player_company.monthly_rent # Charge rent each month. Value set by PlayerCompany.
+
 
 func _on_year_incremented(_year):
 	if (finances.annual_profit >= 1000):
@@ -162,24 +187,30 @@ func _on_year_incremented(_year):
 		finances.annual_profit = 0 # Reset annual_profit each year.
 		finances.annual_expenses = 0 # Reset annual_expenses each year.
 
+
 func _on_timer_timeout():
 	date_time.increment()
+
 
 func _on_speed_0_texture_button_toggled(toggled_on):
 	if (toggled_on):
 		selected_game_speed = GameSpeed.PAUSED
 
+
 func _on_speed_1_texture_button_toggled(toggled_on):
 	if (toggled_on):
 		selected_game_speed = GameSpeed.NORMAL
+
 
 func _on_speed_2_texture_button_toggled(toggled_on):
 	if (toggled_on):
 		selected_game_speed = GameSpeed.FAST
 
+
 func _on_speed_3_texture_button_toggled(toggled_on):
 	if (toggled_on):
 		selected_game_speed = GameSpeed.FASTER
+
 
 func _on_office_texture_button_pressed():
 	# Switch to Screens.DROP_DOWN
@@ -188,10 +219,13 @@ func _on_office_texture_button_pressed():
 	elif (active_screen == Screens.DROP_DOWN):
 		active_screen = Screens.OFFICE
 
+
 func _on_background_button_pressed():
 	if (active_screen == Screens.DROP_DOWN):
 		active_screen = Screens.OFFICE
 
+
 func _on_pause_menu_button_pressed():
 	game_speed = GameSpeed.PAUSED
 	active_screen = Screens.PAUSE_MENU
+

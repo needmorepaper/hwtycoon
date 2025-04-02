@@ -1,4 +1,5 @@
 extends TextureRect
+## Script designed for the rotating CPU graphic
 
 func _ready():
 	pivot_offset = size / 2 # Center point of rotation

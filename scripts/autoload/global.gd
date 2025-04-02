@@ -25,7 +25,9 @@ func load_scene(scene_path: String):
 	current_scene = scene_path
 	get_tree().change_scene_to_packed(loading_screen_scene)
 
-func dev_quick_load(): ## WARNING: A DevTool to quickly load into gameplay. NOTE: Should probably be moved to a DevTool script.
+## WARNING: A DevTool to quickly load into gameplay.
+## NOTE: Should probably be moved to a DevTool script.
+func dev_quick_load(): 
 	push_warning("WARNING: A DevTool is Active")
 	var new_player_company = PlayerCompany.new()
 	
@@ -36,7 +38,7 @@ func dev_quick_load(): ## WARNING: A DevTool to quickly load into gameplay. NOTE
 	new_player_company.difficulty = PlayerCompany.Difficulty.EASY
 	
 	player_company = new_player_company
-	call_deferred("load_scene",gameplay_scene)
+	call_deferred("load_scene", gameplay_scene)
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,4 +47,4 @@ func _ready():
 	add_child(game_config)
 	game_config.fullscreen_changed.connect(_on_game_config_fullscreen_changed)
 	#dev_quick_load()
-	call_deferred("load_scene",main_menu_scene) # WARNING: Temporarily replaced by dev_quick_load().
+	call_deferred("load_scene", main_menu_scene) # WARNING: Temporarily replaced by dev_quick_load().

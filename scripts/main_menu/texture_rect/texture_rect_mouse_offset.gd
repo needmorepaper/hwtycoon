@@ -1,4 +1,7 @@
 extends TextureRect
+## Script designed for the main menu's room graphic
+## TODO: On some resolution and window size variants, the room goes too high and leaves a gap at the bottom.
+
 var original_pos = position
 
 func _process(_delta):

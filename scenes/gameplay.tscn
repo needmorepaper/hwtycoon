@@ -35,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dmmys4x51jukd" path="res://resources/imported_resources/hardw_x-sheet0.png" id="22_5vu4g"]
 [ext_resource type="Script" uid="uid://cndmk2nyclrpj" path="res://scripts/gameplay/new_hardware/select_hardware.gd" id="22_s1tv7"]
 [ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="22_s6y8e"]
-[ext_resource type="StyleBox" uid="uid://cgpby2hajjqae" path="res://resources/Styles/Button/No_Focus.stylebox" id="23_37dvx"]
+[ext_resource type="StyleBox" uid="uid://cgpby2hajjqae" path="res://resources/styles/button/no_focus.stylebox" id="23_37dvx"]
 [ext_resource type="PackedScene" uid="uid://wxkkbod6018q" path="res://scenes/gameplay/select_hardware_button.tscn" id="27_s1tv7"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_81iov"]

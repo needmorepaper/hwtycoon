@@ -3,7 +3,8 @@ extends MarginContainer
 @onready var gameplay: Gameplay = get_tree().current_scene
 @onready var dropdown_button = preload("res://scenes/gameplay/dropdown_button.tscn")
 
-func update_dropdown_list(): ## Updates the dropdown list
+## Updates the dropdown list
+func update_dropdown_list(): 
 	var button_count = 0
 	
 	for child in %DropdownBoxContainer.get_children(): # Clear the list.

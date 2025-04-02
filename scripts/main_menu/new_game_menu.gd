@@ -1,4 +1,5 @@
 extends MarginContainer
+## Script that handles the New Game menu and its methods
 
 var Difficulty = PlayerCompany.Difficulty
 
@@ -17,10 +18,11 @@ func update_done_button():
 	else:
 		%DoneButton.disabled = true
 
+
 func _ready():
 	update_done_button()
-	
-	
+
+
 func _on_company_line_edit_text_changed(new_text):
 	company_name = new_text
 	update_done_button()
@@ -36,7 +38,8 @@ func _on_last_name_line_edit_text_changed(new_text):
 	update_done_button()
 
 
-func _on_logo_button_pressed(): # TODO: Logo Creation Menu & Button Hover
+# TODO: Logo Creation Menu & Button Hover
+func _on_logo_button_pressed():
 	push_error("Not implemented")
 	update_done_button()
 
@@ -68,8 +71,8 @@ func _on_very_hard_button_toggled(toggled_on):
 		game_difficulty = Difficulty.VERY_HARD
 		update_done_button()
 
-
-func _on_game_settings_texture_button_toggled(toggled_on): # TODO: Create new game settings menu
+## TODO: Create new game settings menu
+func _on_game_settings_texture_button_toggled(toggled_on): 
 	push_error("Not implemented")
 	update_done_button()
 

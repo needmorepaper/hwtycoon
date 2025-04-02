@@ -1,4 +1,5 @@
 extends MarginContainer
+## Script that handles the about menu/prompt
 
 @onready var main_menu: MainMenu = get_tree().current_scene
 

@@ -71,7 +71,7 @@ func _on_very_hard_button_toggled(toggled_on):
 		game_difficulty = Difficulty.VERY_HARD
 		update_done_button()
 
-## TODO: Create new game settings menu
+# TODO: Create new game settings menu
 func _on_game_settings_texture_button_toggled(toggled_on): 
 	push_error("Not implemented")
 	update_done_button()

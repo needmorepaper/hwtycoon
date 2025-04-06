@@ -1,8 +1,8 @@
-class_name SelectHardwareButton extends MarginContainer
+class_name SelectArchitectureButton extends MarginContainer
 
 var new_hardware: NewHardware
 
-var hardware: Classes.Hardware
+var architecture: Classes.Architecture
 
 var button_text: String:
 	set(value):
@@ -32,5 +32,5 @@ func _ready():
 	%TextureButton.pressed.connect(_on_button_pressed)
 
 func _on_button_pressed():
-	new_hardware.selected_hardware = hardware
-	new_hardware.active_screen = new_hardware.Screens.SELECT_ARCHITECTURE
+	new_hardware.selected_architecture = architecture
+	new_hardware.active_screen = new_hardware.Screens.DESIGN

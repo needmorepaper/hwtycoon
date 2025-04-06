@@ -63,6 +63,8 @@ var Screens: Dictionary = {
 	OFFICE = Classes.Screen.new("OFFICE", false, false),
 	PAUSE_MENU = Classes.Screen.new("PAUSE_MENU", false, false),
 	DROP_DOWN = Classes.Screen.new("DROP_DOWN", false, false),
+	
+	# Dropdown-able
 	NEW_HARDWARE = Classes.Screen.new("New Hardware", true, true),
 	RESEARCH = Classes.Screen.new("R&D", true, false),
 	PRODUCTS = Classes.Screen.new("Products", true, false),
@@ -87,21 +89,21 @@ var active_screen: Classes.Screen:
 			Screens.PAUSE_MENU:
 				game_speed = GameSpeed.PAUSED
 				%PauseMenuButtonMarginContainer.visible = false
-				%PauseMenuMarginContainer.show_pause_menu()
+				%PauseMenuMarginContainer.visible = true
 				%DropdownMarginContainer.visible = false
 				%NewHardwareMarginContainer.visible = false
 			Screens.DROP_DOWN:
 				game_speed = GameSpeed.PAUSED
 				%PauseMenuButtonMarginContainer.visible = true
 				%PauseMenuMarginContainer.visible = false
-				%DropdownMarginContainer.show_dropdown()
+				%DropdownMarginContainer.visible = true
 				%NewHardwareMarginContainer.visible = false
 			Screens.NEW_HARDWARE: # TODO: Define Screen.NEW_HARDWARE
 				game_speed = GameSpeed.PAUSED
 				%PauseMenuButtonMarginContainer.visible = false
 				%PauseMenuMarginContainer.visible = false
 				%DropdownMarginContainer.visible = false
-				%NewHardwareMarginContainer.show_new_hardware()
+				%NewHardwareMarginContainer.visible = true
 			Screens.RESEARCH: # TODO: Define Screen.RESEARCH
 				pass
 			Screens.MARKET: # TODO: Define Screen.MARKET
@@ -119,8 +121,21 @@ var Hardwares: Dictionary = {
 	GPU = Classes.Hardware.new("GPU", 
 		preload("res://resources/imported_resources/hardw_gpu-sheet0.png"), 
 		preload("res://resources/imported_resources/hardw_gpu-sheet1.png"), 
-		false)
+		true)
 }
+
+
+## Defines architecture types
+var Architectures: Dictionary = {
+	DefaultCPUArchitecture = Classes.Architecture.new("Default CPU Architecture", Hardwares.CPU),
+	DefaultGPUArchitecture = Classes.Architecture.new("Default GPU Architecture", Hardwares.GPU)
+}
+
+
+## Defines process nodes
+var ProcessNodes: Array = [
+	Classes.ProcessNode.new("15 μm", 15000)
+]
 
 
 func _ready():
@@ -228,4 +243,3 @@ func _on_background_button_pressed():
 func _on_pause_menu_button_pressed():
 	game_speed = GameSpeed.PAUSED
 	active_screen = Screens.PAUSE_MENU
-

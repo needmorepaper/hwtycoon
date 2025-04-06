@@ -30,6 +30,31 @@ class Hardware:
 		button_texture_hover = _button_texture_hover
 		unlocked = _unlocked
 
+## This class describes all architecture types for types of hardware
+class Architecture:
+	var button_text: String
+	var hardware: Hardware
+	
+	func _init(_button_text: String = "Unnamed Architecture", _hardware: Hardware = Hardware.new()):
+		button_text = _button_text
+		hardware = _hardware
+
+## This class describes all process nodes
+## _scale_nm is in nanometers (1μm == 1000nm) and is used to index ProcessNodes
+class ProcessNode:
+	var button_text: String
+	var scale_nm: float
+	var design_time_multiplier: float
+	var unit_cost_multiplier: float
+	var clock_range: Array[int]
+	
+	func _init(_button_text: String = "Unnamed Process Node", _scale_nm: float = 15000, _design_time_multiplier: float = 1.0, _unit_cost_multiplier: float = 1.0, _clock_range: Array[int] = [100, 600]):
+		button_text = _button_text
+		scale_nm = _scale_nm
+		design_time_multiplier = _design_time_multiplier
+		unit_cost_multiplier = _unit_cost_multiplier
+		clock_range = _clock_range
+
 ## This class manages the flow of time in Gameplay,
 class DateTime:
 	const days_in_year: float = 360  # NOTE: original game's year only had 360 days
@@ -139,7 +164,7 @@ class Product:
 	var design_name: String = "design_name" ## The name of thi CPU design. e.g. '13000k' NOTE: WIP TODO: Set by Screen.NEW_HARDWARE
 	#var build_quality: float = 75.0 ## The build quality of the product ranging from 50% - 100%. NOTE: WIP
 	#var package ## The package in which to house the CPU die. INFO: Affects design_cost, production_cost and design_time NOTE: WIP
-	#var core_count ## The number of processing cores intergrated into the CPU die. INFO: Was unimplemented in the original game. NOTE: WIP
+	#var core_count ## The number of processing cores intergrated into the CPU die. NOTE: WIP
 	
 	# stats
 	#var performance: float # NOTE: WIP

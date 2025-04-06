@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://wxkkbod6018q"]
+[gd_scene load_steps=8 format=3 uid="uid://cksqycsfxxou1"]
 
-[ext_resource type="Texture2D" uid="uid://vk5vyae4yroi" path="res://resources/imported_resources/hardw_cpu-sheet0.png" id="1_4v2a2"]
-[ext_resource type="Script" uid="uid://cys2ow3ogbgwq" path="res://scripts/gameplay/new_hardware/select_hardware_button.gd" id="1_cm1kh"]
-[ext_resource type="Texture2D" uid="uid://balnynnewqbc8" path="res://resources/imported_resources/hardw_cpu-sheet1.png" id="2_cm1kh"]
-[ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="3_v5ai3"]
-[ext_resource type="FontFile" uid="uid://ces8cy0k1egmf" path="res://resources/font/lato-bold-webfont.ttf" id="5_v5ai3"]
+[ext_resource type="Script" uid="uid://dwua4h08moxey" path="res://scripts/gameplay/new_hardware/select_architecture_button.gd" id="1_d71qc"]
+[ext_resource type="Texture2D" uid="uid://vk5vyae4yroi" path="res://resources/imported_resources/hardw_cpu-sheet0.png" id="2_33jtf"]
+[ext_resource type="Texture2D" uid="uid://balnynnewqbc8" path="res://resources/imported_resources/hardw_cpu-sheet1.png" id="3_lci36"]
+[ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="4_pk1tc"]
+[ext_resource type="FontFile" uid="uid://ces8cy0k1egmf" path="res://resources/font/lato-bold-webfont.ttf" id="5_33jtf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7tkd"]
 bg_color = Color(0.8, 0.8, 0.8, 1)
@@ -20,8 +20,8 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="SelectHardwareButton" type="MarginContainer"]
-script = ExtResource("1_cm1kh")
+[node name="SelectArchitectureButtonMarginContainer" type="MarginContainer"]
+script = ExtResource("1_d71qc")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 2
@@ -31,22 +31,21 @@ vertical = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-texture_normal = ExtResource("1_4v2a2")
-texture_hover = ExtResource("2_cm1kh")
+texture_normal = ExtResource("2_33jtf")
+texture_hover = ExtResource("3_lci36")
 stretch_mode = 5
 
 [node name="RichTextLabel" type="RichTextLabel" parent="BoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("3_v5ai3")
-theme_override_fonts/bold_font = ExtResource("5_v5ai3")
+theme_override_fonts/normal_font = ExtResource("4_pk1tc")
+theme_override_fonts/bold_font = ExtResource("5_33jtf")
 theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_font_size = 16
 bbcode_enabled = true
-text = "CPU | lv. 0"
+text = "Default CPU Architecture"
 fit_content = true
-autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 

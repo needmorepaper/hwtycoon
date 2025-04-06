@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://lxoexalxabme"]
+[gd_scene load_steps=58 format=3 uid="uid://lxoexalxabme"]
 
 [ext_resource type="Script" uid="uid://dbthdbrlnbdt" path="res://scripts/gameplay/gameplay.gd" id="1_bhmdk"]
 [ext_resource type="Texture2D" uid="uid://reywphfca0dl" path="res://resources/imported_resources/room1-sheet0.png" id="2_s5y6v"]
@@ -25,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://rdwdw6viqd68" path="res://resources/imported_resources/menu_load-sheet2.png" id="13_5vu4g"]
 [ext_resource type="Script" uid="uid://chdmyxr24ejdb" path="res://scripts/gameplay/dropdown.gd" id="13_mesn4"]
 [ext_resource type="Texture2D" uid="uid://c28qcqdrjup20" path="res://resources/imported_resources/ui_menu-sheet0.png" id="13_vrqbj"]
-[ext_resource type="PackedScene" uid="uid://6l6fkgpwc68x" path="res://scenes/ui/hardware_development.tscn" id="14_gm2mb"]
 [ext_resource type="Texture2D" uid="uid://sddduki3drm5" path="res://resources/imported_resources/menu_load-sheet0.png" id="14_s6y8e"]
 [ext_resource type="Texture2D" uid="uid://bd8byy1gqps6f" path="res://resources/imported_resources/menu_options-sheet1.png" id="15_s1tv7"]
 [ext_resource type="Texture2D" uid="uid://cim57se6n06wu" path="res://resources/imported_resources/menu_options-sheet2.png" id="16_37dvx"]
@@ -35,8 +34,12 @@
 [ext_resource type="Texture2D" uid="uid://dmmys4x51jukd" path="res://resources/imported_resources/hardw_x-sheet0.png" id="22_5vu4g"]
 [ext_resource type="Script" uid="uid://cndmk2nyclrpj" path="res://scripts/gameplay/new_hardware/select_hardware.gd" id="22_s1tv7"]
 [ext_resource type="FontFile" uid="uid://bqtj7evfr2o24" path="res://resources/font/lato-regular-webfont.ttf" id="22_s6y8e"]
-[ext_resource type="StyleBox" uid="uid://cgpby2hajjqae" path="res://resources/styles/button/no_focus.stylebox" id="23_37dvx"]
+[ext_resource type="StyleBox" uid="uid://cgpby2hajjqae" path="res://resources/Styles/Button/No_Focus.stylebox" id="23_37dvx"]
 [ext_resource type="PackedScene" uid="uid://wxkkbod6018q" path="res://scenes/gameplay/select_hardware_button.tscn" id="27_s1tv7"]
+[ext_resource type="Script" uid="uid://0jtdk1jxmon1" path="res://scripts/gameplay/new_hardware/select_architecture.gd" id="28_p5dy6"]
+[ext_resource type="Texture2D" uid="uid://bvxk6xk0cw5sl" path="res://resources/imported_resources/hardw_transparent.png" id="29_81iov"]
+[ext_resource type="PackedScene" uid="uid://cksqycsfxxou1" path="res://scenes/gameplay/select_architecture_button.tscn" id="30_81iov"]
+[ext_resource type="PackedScene" uid="uid://b4kmsubsf48aa" path="res://scenes/gameplay/dropdown_button.tscn" id="39_o7tkd"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_81iov"]
 
@@ -66,6 +69,133 @@ Button/styles/focus = ExtResource("23_37dvx")
 Button/styles/hover = SubResource("StyleBoxFlat_s6y8e")
 Button/styles/normal = SubResource("StyleBoxFlat_s1tv7")
 Button/styles/pressed = SubResource("StyleBoxFlat_37dvx")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p5dy6"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_81iov"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7tkd"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slt2r"]
+bg_color = Color(0.392157, 0.705882, 0.960784, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yjd84"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_o7tkd"]
+OptionButton/colors/font_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_focus_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_hover_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+OptionButton/colors/font_pressed_color = Color(0, 0, 0, 1)
+OptionButton/constants/modulate_arrow = 1
+OptionButton/font_sizes/font_size = 14
+OptionButton/fonts/font = ExtResource("22_s6y8e")
+OptionButton/icons/arrow = null
+OptionButton/styles/hover = SubResource("StyleBoxFlat_p5dy6")
+OptionButton/styles/normal = SubResource("StyleBoxFlat_81iov")
+OptionButton/styles/pressed = SubResource("StyleBoxFlat_o7tkd")
+PopupMenu/colors/font_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_hover_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_separator_color = Color(0, 0, 0, 1)
+PopupMenu/constants/v_separation = 4
+PopupMenu/font_sizes/font_separator_size = 14
+PopupMenu/font_sizes/font_size = 14
+PopupMenu/fonts/font = ExtResource("22_s6y8e")
+PopupMenu/fonts/font_separator = ExtResource("22_s6y8e")
+PopupMenu/icons/radio_checked = ExtResource("29_81iov")
+PopupMenu/icons/radio_unchecked = ExtResource("29_81iov")
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_slt2r")
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_yjd84")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1a85y"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl5e0"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0, 0, 0, 0.1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_engjn"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6h3lr"]
+content_margin_left = 20.0
+content_margin_right = 20.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="Theme" id="Theme_rynmh"]
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/colors/font_disabled_color = Color(0, 0, 0, 0.2)
+Button/colors/font_focus_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
+Button/colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(0, 0, 0, 1)
+Button/font_sizes/font_size = 26
+Button/fonts/font = ExtResource("10_t4x03")
+Button/styles/disabled = SubResource("StyleBoxFlat_1a85y")
+Button/styles/hover = SubResource("StyleBoxFlat_hl5e0")
+Button/styles/normal = SubResource("StyleBoxFlat_engjn")
+Button/styles/pressed = SubResource("StyleBoxFlat_6h3lr")
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_pv71h"]
 
@@ -140,18 +270,28 @@ script = ExtResource("6_srvxn")
 layout_mode = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="ColorRect" type="ColorRect" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect"]
+[node name="BackdropButton" type="Button" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0.129412, 0.588235, 0.952941, 1)
 
-[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect"]
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -160,12 +300,12 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="ResumeMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+[node name="ResumeMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="ResumeTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/ResumeMarginContainer"]
+[node name="ResumeTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/ResumeMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
@@ -175,12 +315,12 @@ texture_pressed = ExtResource("7_25e7j")
 texture_hover = ExtResource("8_t4x03")
 stretch_mode = 5
 
-[node name="SaveMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+[node name="SaveMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="SaveTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SaveMarginContainer"]
+[node name="SaveTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/SaveMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
@@ -190,12 +330,12 @@ texture_pressed = ExtResource("10_srvxn")
 texture_hover = ExtResource("11_sqtar")
 stretch_mode = 5
 
-[node name="LoadMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+[node name="LoadMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="LoadTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/LoadMarginContainer"]
+[node name="LoadTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/LoadMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
@@ -205,12 +345,12 @@ texture_pressed = ExtResource("13_5vu4g")
 texture_hover = ExtResource("14_s6y8e")
 stretch_mode = 5
 
-[node name="SettingsMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer"]
+[node name="SettingsMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="SettingsTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SettingsMarginContainer"]
+[node name="SettingsTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/SettingsMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 toggle_mode = true
@@ -220,7 +360,7 @@ texture_pressed = ExtResource("16_37dvx")
 texture_hover = ExtResource("17_p5dy6")
 stretch_mode = 5
 
-[node name="ExitMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect"]
+[node name="ExitMarginContainer" type="MarginContainer" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect"]
 layout_mode = 1
 anchors_preset = 11
 anchor_left = 1.0
@@ -232,7 +372,7 @@ grow_vertical = 2
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_right = 50
 
-[node name="ExitTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/ExitMarginContainer"]
+[node name="ExitTextureButton" type="TextureButton" parent="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/ExitMarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture_normal = ExtResource("18_o7tkd")
@@ -241,6 +381,7 @@ stretch_mode = 5
 
 [node name="NewHardwareMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,8 +394,18 @@ script = ExtResource("21_5vu4g")
 layout_mode = 2
 color = Color(0, 0, 0, 0.5)
 
-[node name="SelectHardwareMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect"]
+[node name="BackdropButton" type="Button" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="SelectHardwareMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -267,22 +418,22 @@ theme_override_constants/margin_right = 60
 theme_override_constants/margin_bottom = 30
 script = ExtResource("22_s1tv7")
 
-[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer"]
 layout_mode = 2
 
-[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer"]
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 vertical = true
 
-[node name="HeaderColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer"]
+[node name="HeaderColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer"]
 custom_minimum_size = Vector2(0, 55)
 layout_mode = 2
 color = Color(0.392157, 0.709804, 0.964706, 1)
 
-[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect"]
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -290,11 +441,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CloseButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
+[node name="CloseButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="CloseButton" type="Button" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer"]
+[node name="CloseButton" type="Button" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -303,11 +454,11 @@ theme = SubResource("Theme_p5dy6")
 icon = ExtResource("22_5vu4g")
 icon_alignment = 1
 
-[node name="TitleMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
+[node name="TitleMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/TitleMarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/TitleMarginContainer"]
 custom_minimum_size = Vector2(424, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("22_s6y8e")
@@ -321,11 +472,11 @@ scroll_active = false
 autowrap_mode = 0
 vertical_alignment = 1
 
-[node name="BodyColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer"]
+[node name="BodyColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect"]
+[node name="ScrollContainer" type="ScrollContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -333,7 +484,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -342,14 +493,252 @@ theme_override_constants/margin_top = 30
 theme_override_constants/margin_right = 50
 theme_override_constants/margin_bottom = 40
 
-[node name="SelectHardwareFlowContainer" type="FlowContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer"]
+[node name="SelectHardwareFlowContainer" type="FlowContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/h_separation = 40
 theme_override_constants/v_separation = 30
 
-[node name="CPUMarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/SelectHardwareFlowContainer" instance=ExtResource("27_s1tv7")]
+[node name="SelectHardwareButton" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/BodyColorRect/ScrollContainer/MarginContainer/SelectHardwareFlowContainer" instance=ExtResource("27_s1tv7")]
 layout_mode = 2
+
+[node name="SelectArchitectureMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 30
+script = ExtResource("28_p5dy6")
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer"]
+layout_mode = 2
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+vertical = true
+
+[node name="HeaderColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 55)
+layout_mode = 2
+color = Color(0.392157, 0.709804, 0.964706, 1)
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/HeaderColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CloseButtonMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="CloseButton" type="Button" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_p5dy6")
+icon = ExtResource("22_5vu4g")
+icon_alignment = 1
+
+[node name="TitleMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/TitleMarginContainer"]
+custom_minimum_size = Vector2(424, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("22_s6y8e")
+theme_override_fonts/bold_font = ExtResource("10_t4x03")
+theme_override_font_sizes/normal_font_size = 26
+theme_override_font_sizes/bold_font_size = 26
+bbcode_enabled = true
+text = "Select Architecture"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="BodyColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InfoMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="MaxClockSpeedMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MaxClockSpeedMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MaxClockSpeedMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_s6y8e")
+theme_override_font_sizes/font_size = 14
+text = "Maximum clock speed:"
+horizontal_alignment = 1
+
+[node name="MaxClockSpeedLabel" type="Label" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MaxClockSpeedMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_s6y8e")
+theme_override_font_sizes/font_size = 14
+text = "200 kHz"
+horizontal_alignment = 1
+
+[node name="ProcessNodeMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/ProcessNodeMarginContainer"]
+layout_mode = 2
+alignment = 1
+vertical = true
+
+[node name="Label" type="Label" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/ProcessNodeMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_s6y8e")
+theme_override_font_sizes/font_size = 16
+text = "Process Node"
+horizontal_alignment = 1
+
+[node name="ProcessNodeOptionButton" type="OptionButton" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/ProcessNodeMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_o7tkd")
+allow_reselect = true
+
+[node name="MultiplierMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MultiplierMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+vertical = true
+
+[node name="DesignSpeedLabel" type="Label" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MultiplierMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_s6y8e")
+theme_override_font_sizes/font_size = 14
+text = "Design speed: 100%"
+horizontal_alignment = 1
+
+[node name="UnitCostLabel" type="Label" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MultiplierMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_s6y8e")
+theme_override_font_sizes/font_size = 14
+text = "Unit cost: 100%"
+horizontal_alignment = 1
+
+[node name="Label" type="Label" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MultiplierMarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_s6y8e")
+theme_override_font_sizes/font_size = 14
+text = "Possible clock speeds:"
+horizontal_alignment = 1
+
+[node name="ClockRangeLabel" type="Label" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/InfoMarginContainer/BoxContainer/MultiplierMarginContainer/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("22_s6y8e")
+theme_override_font_sizes/font_size = 14
+text = "100 kHz - 600 kHz"
+horizontal_alignment = 1
+
+[node name="ArchitectureMarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="SelectArchitectureFlowContainer" type="FlowContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/ArchitectureMarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 30
+
+[node name="SelectArchitectureButtonMarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/BodyColorRect/BoxContainer/ArchitectureMarginContainer/SelectArchitectureFlowContainer" instance=ExtResource("30_81iov")]
+layout_mode = 2
+
+[node name="FooterColorRect" type="ColorRect" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/FooterColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BackButton" type="Button" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = SubResource("Theme_rynmh")
+text = "BACK"
+
+[node name="DoneButton" type="Button" parent="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme = SubResource("Theme_rynmh")
+disabled = true
+text = "DONE"
 
 [node name="HeaderMarginContainer" type="MarginContainer" parent="BackgroundColorRect"]
 layout_mode = 1
@@ -520,29 +909,23 @@ size_flags_vertical = 0
 theme_override_constants/separation = 0
 vertical = true
 
-[node name="To Be Overhauled" type="ColorRect" parent="."]
-unique_name_in_owner = true
-visible = false
+[node name="DropdownButton" parent="BackgroundColorRect/DropdownMarginContainer/DropdownBoxContainer" instance=ExtResource("39_o7tkd")]
 layout_mode = 2
-color = Color(0.207843, 0.207843, 0.207843, 0.658824)
-
-[node name="HardwareDevelopment" parent="To Be Overhauled" instance=ExtResource("14_gm2mb")]
-unique_name_in_owner = true
-layout_mode = 1
-offset_left = 192.0
-offset_top = 68.0
-offset_right = 192.0
-offset_bottom = 68.0
 
 [connection signal="pressed" from="BackgroundColorRect/BackgroundButton" to="." method="_on_background_button_pressed"]
 [connection signal="pressed" from="BackgroundColorRect/BackgroundButton/OfficeMarginContainer/OfficeTextureButton" to="." method="_on_office_texture_button_pressed"]
 [connection signal="pressed" from="BackgroundColorRect/PauseMenuButtonMarginContainer/PauseMenuButton" to="." method="_on_pause_menu_button_pressed"]
-[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/ResumeMarginContainer/ResumeTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_resume_texture_button_toggled"]
-[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SaveMarginContainer/SaveTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_save_texture_button_toggled"]
-[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/LoadMarginContainer/LoadTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_load_texture_button_toggled"]
-[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/BoxContainer/SettingsMarginContainer/SettingsTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_settings_texture_button_toggled"]
-[connection signal="pressed" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/ColorRect/ExitMarginContainer/ExitTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_exit_texture_button_pressed"]
-[connection signal="pressed" from="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer/CloseButton" to="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/SelectHardwareMarginContainer" method="_on_close_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_backdrop_button_pressed"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/ResumeMarginContainer/ResumeTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_resume_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/SaveMarginContainer/SaveTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_save_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/LoadMarginContainer/LoadTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_load_texture_button_toggled"]
+[connection signal="toggled" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/BoxContainer/SettingsMarginContainer/SettingsTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_settings_texture_button_toggled"]
+[connection signal="pressed" from="BackgroundColorRect/PauseMenuMarginContainer/BackdropColorRect/BackdropButton/ColorRect/ExitMarginContainer/ExitTextureButton" to="BackgroundColorRect/PauseMenuMarginContainer" method="_on_exit_texture_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton" to="BackgroundColorRect/NewHardwareMarginContainer" method="_on_backdrop_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer/CloseButton" to="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectHardwareMarginContainer" method="_on_close_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/HeaderColorRect/BoxContainer/CloseButtonMarginContainer/CloseButton" to="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer" method="_on_close_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/BackButton" to="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer" method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer/MarginContainer/BoxContainer/FooterColorRect/MarginContainer/DoneButton" to="BackgroundColorRect/NewHardwareMarginContainer/BackdropColorRect/BackdropButton/SelectArchitectureMarginContainer" method="_on_done_button_pressed"]
 [connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed1TextureButton" to="." method="_on_speed_1_texture_button_toggled"]
 [connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed2TextureButton" to="." method="_on_speed_2_texture_button_toggled"]
 [connection signal="toggled" from="BackgroundColorRect/HeaderMarginContainer/ColorRect/TimeMarginContainer/BoxContainer/TimeButtonsBoxContainer/Speed3TextureButton" to="." method="_on_speed_3_texture_button_toggled"]

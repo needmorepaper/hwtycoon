@@ -29,7 +29,7 @@ var active_screen: Screens:
 			Screens.DESIGN: # TODO: Define Screen.DESIGN
 				push_error("Not implemented")
 				%SelectHardwareMarginContainer.visible = false
-				%SelectArchitectureMarginContainer.visible = false
+				%SelectArchitectureMarginContainer.visible = true
 
 
 func _on_backdrop_button_pressed():

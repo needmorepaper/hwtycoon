@@ -4,14 +4,19 @@ class_name Classes extends Node
 
 ## This class describes all gameplay screens
 class Screen:
-	var button_text: String
-	var dropdown_able: bool
-	var unlocked: bool ## If an unlocked Screen is dropdown_able it will be shown in the dropdown menu.
+	var button_text: String ## Name of the Screen in the dropdown
+	var droppable: bool ## If a Screen can be used in the dropdown menu
+	var unpausable : bool ## If a Screen allows the gameplay to be unpaused
+	var unlocked: bool ## If an unlocked Screen is droppable it will be shown in the dropdown menu.
 	
-	func _init(_button_text: String = "Unnamed Button", _dropdown_able: bool = false, _unlocked: bool = false):
-		button_text = _button_text
-		dropdown_able = _dropdown_able
-		unlocked = _unlocked
+	func _init(_button_text: String = "Unnamed Button", 
+		_droppable: bool = false, 
+		_unpausable: bool = false,
+		_unlocked: bool = false):
+			button_text = _button_text
+			droppable = _droppable
+			unpausable = _unpausable
+			unlocked = _unlocked
 
 ## This class describes all types of hardware
 class Hardware:

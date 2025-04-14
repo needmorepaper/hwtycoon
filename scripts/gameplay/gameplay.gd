@@ -60,23 +60,24 @@ var game_speed: GameSpeed:
 
 ## Dictionary of various gameplay screens
 var Screens: Dictionary = {
-	OFFICE = Classes.Screen.new("OFFICE", false, false),
-	PAUSE_MENU = Classes.Screen.new("PAUSE_MENU", false, false),
-	DROP_DOWN = Classes.Screen.new("DROP_DOWN", false, false),
+	OFFICE = Classes.Screen.new("OFFICE", false, true, false),
+	PAUSE_MENU = Classes.Screen.new("PAUSE_MENU", false, false, false),
+	DROP_DOWN = Classes.Screen.new("DROP_DOWN", false, true, false),
 	
 	# Dropdown-able
-	NEW_HARDWARE = Classes.Screen.new("New Hardware", true, true),
-	RESEARCH = Classes.Screen.new("R&D", true, false),
-	PRODUCTS = Classes.Screen.new("Products", true, false),
-	COMPANIES = Classes.Screen.new("Companies", true, false),
-	MILESTONES = Classes.Screen.new("Milestones", true, false),
-	MARKET = Classes.Screen.new("Market", true, false),
-	BANK = Classes.Screen.new("Bank", true, false)
+	NEW_HARDWARE = Classes.Screen.new("New Hardware", true, false, true),
+	RESEARCH = Classes.Screen.new("R&D", true, false, false),
+	PRODUCTS = Classes.Screen.new("Products", true, false, false),
+	COMPANIES = Classes.Screen.new("Companies", true, false, false),
+	MILESTONES = Classes.Screen.new("Milestones", true, false, false),
+	MARKET = Classes.Screen.new("Market", true, false, false),
+	BANK = Classes.Screen.new("Bank", true, false, false)
 	}
 
 
 ## Defines the active screen
 var active_screen: Classes.Screen:
+	## TODO: This is gonna be a *huge* mess as more screens get implemented.\
 	set(value):
 		active_screen = value
 		match value:
@@ -172,7 +173,7 @@ func _on_date_time_changed(value):
 func _on_day_incremented(_day):
 	var weeks_since_sale: int = floor((date_time.count / 7) - (product.product_release_day / 7) + 1) # Add 1 to account for the Fencepost problem.
 	var profit_per_sale: float = product.retail_price - product.production_cost
-	var number_of_sales: int = 2 ## Number of sales per day. TODO: Calculate the number of sales per day. Based off popularity and hype?
+	var number_of_sales: int = 2 ## TODO: Calculate the number of sales per day. Based off popularity and hype?
 	
 	if (date_time.count == product.product_release_day):
 		product._on_product_release_day(date_time)
@@ -208,27 +209,34 @@ func _on_timer_timeout():
 
 
 func _on_speed_0_texture_button_toggled(toggled_on):
-	if (toggled_on):
+	if (toggled_on && active_screen.unpausable):
 		selected_game_speed = GameSpeed.PAUSED
-
+	else:
+		%Speed0TextureButton.set_pressed_no_signal(true)
 
 func _on_speed_1_texture_button_toggled(toggled_on):
-	if (toggled_on):
+	if (toggled_on && active_screen.unpausable):
 		selected_game_speed = GameSpeed.NORMAL
+	else:
+		%Speed1TextureButton.set_pressed_no_signal(false)
+		%Speed0TextureButton.set_pressed_no_signal(true)
 
 
 func _on_speed_2_texture_button_toggled(toggled_on):
-	if (toggled_on):
+	if (toggled_on && active_screen.unpausable):
 		selected_game_speed = GameSpeed.FAST
-
+	else:
+		%Speed2TextureButton.set_pressed_no_signal(false)
+		%Speed0TextureButton.set_pressed_no_signal(true)
 
 func _on_speed_3_texture_button_toggled(toggled_on):
-	if (toggled_on):
+	if (toggled_on && active_screen.unpausable):
 		selected_game_speed = GameSpeed.FASTER
-
+	else:
+		%Speed3TextureButton.set_pressed_no_signal(false)
+		%Speed0TextureButton.set_pressed_no_signal(true)
 
 func _on_office_texture_button_pressed():
-	# Switch to Screens.DROP_DOWN
 	if (active_screen == Screens.OFFICE):
 		active_screen = Screens.DROP_DOWN
 	elif (active_screen == Screens.DROP_DOWN):

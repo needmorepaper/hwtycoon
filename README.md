@@ -1,12 +1,14 @@
 # Hardware Tycoon for Godot 4
-A Godot 4 remake of Hardware Tycoon originally made by Haxor1337
+A recreation of Haxor1337's Hardware Tycoon, using Godot 4 as its engine to replace the aging Construct 2
 
 ## Goals
-* Provide a 90% accurate recreation of the latest build of Hardware Tycoon (v0.2.12) to allow for further development of the game by the community
+* Provide a mostly accurate recreation of the latest build of Hardware Tycoon (v0.2.12) and build a base for further development of the game by the community
+* Simpler modding capabilities with a way to convert old mods to a new format
 
 ## Development
-1. `git clone https://github.com/needmorepaper/hwtycoon`
-2. Open project in Godot v4.4.x
+1. Install Git and Godot if you haven't already
+2. In a terminal, enter `git clone https://github.com/needmorepaper/hwtycoon`
+3. Open project in Godot v4.4.x
 
 ## Credits
 ### Original credits

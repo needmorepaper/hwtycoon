@@ -10,13 +10,13 @@ class Screen:
 	var unlocked: bool ## If an unlocked Screen is droppable it will be shown in the dropdown menu.
 	
 	func _init(_button_text: String = "Unnamed Button", 
-		_droppable: bool = false, 
-		_unpausable: bool = false,
-		_unlocked: bool = false):
-			button_text = _button_text
-			droppable = _droppable
-			unpausable = _unpausable
-			unlocked = _unlocked
+			_droppable: bool = false, 
+			_unpausable: bool = false,
+			_unlocked: bool = false):
+		button_text = _button_text
+		droppable = _droppable
+		unpausable = _unpausable
+		unlocked = _unlocked
 
 ## This class describes all types of hardware
 class Hardware:

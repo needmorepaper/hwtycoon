@@ -19,7 +19,10 @@ enum GameSpeed {UNPAUSED, PAUSED, NORMAL, FAST, FASTER}
 var selected_game_speed: GameSpeed: 
 	set(value):
 		selected_game_speed = value
-		game_speed = value
+		if (active_screen.unpausable):
+			game_speed = value
+		else:
+			game_speed = game_speed
 
 
 ## Used by gameplay to set the game_speed.
@@ -65,13 +68,13 @@ var Screens: Dictionary = {
 	DROP_DOWN = Classes.Screen.new("DROP_DOWN", false, true, false),
 	
 	# Dropdown-able
-	NEW_HARDWARE = Classes.Screen.new("New Hardware", true, false, true),
-	RESEARCH = Classes.Screen.new("R&D", true, false, false),
-	PRODUCTS = Classes.Screen.new("Products", true, false, false),
-	COMPANIES = Classes.Screen.new("Companies", true, false, false),
-	MILESTONES = Classes.Screen.new("Milestones", true, false, false),
-	MARKET = Classes.Screen.new("Market", true, false, false),
-	BANK = Classes.Screen.new("Bank", true, false, false)
+	NEW_HARDWARE = Classes.Screen.new("New Hardware", true, true, true),
+	RESEARCH = Classes.Screen.new("R&D", true, true, false),
+	PRODUCTS = Classes.Screen.new("Products", true, true, false),
+	COMPANIES = Classes.Screen.new("Companies", true, true, false),
+	MILESTONES = Classes.Screen.new("Milestones", true, true, false),
+	MARKET = Classes.Screen.new("Market", true, true, false),
+	BANK = Classes.Screen.new("Bank", true, true, false)
 	}
 
 
@@ -147,10 +150,10 @@ func _ready():
 	date_time.day_incremented.connect(_on_day_incremented)
 	date_time.month_incremented.connect(_on_month_incremented)
 	date_time.year_incremented.connect(_on_year_incremented)
+
+	active_screen = Screens.OFFICE
 	
 	selected_game_speed = GameSpeed.PAUSED
-	
-	active_screen = Screens.OFFICE
 	
 	timer.timeout.connect(_on_timer_timeout)
 	add_child(timer)
@@ -209,32 +212,24 @@ func _on_timer_timeout():
 
 
 func _on_speed_0_texture_button_toggled(toggled_on):
-	if (toggled_on && active_screen.unpausable):
+	if (toggled_on):
 		selected_game_speed = GameSpeed.PAUSED
-	else:
-		%Speed0TextureButton.set_pressed_no_signal(true)
+
 
 func _on_speed_1_texture_button_toggled(toggled_on):
-	if (toggled_on && active_screen.unpausable):
+	if (toggled_on):
 		selected_game_speed = GameSpeed.NORMAL
-	else:
-		%Speed1TextureButton.set_pressed_no_signal(false)
-		%Speed0TextureButton.set_pressed_no_signal(true)
 
 
 func _on_speed_2_texture_button_toggled(toggled_on):
-	if (toggled_on && active_screen.unpausable):
+	if (toggled_on):
 		selected_game_speed = GameSpeed.FAST
-	else:
-		%Speed2TextureButton.set_pressed_no_signal(false)
-		%Speed0TextureButton.set_pressed_no_signal(true)
+
 
 func _on_speed_3_texture_button_toggled(toggled_on):
-	if (toggled_on && active_screen.unpausable):
+	if (toggled_on):
 		selected_game_speed = GameSpeed.FASTER
-	else:
-		%Speed3TextureButton.set_pressed_no_signal(false)
-		%Speed0TextureButton.set_pressed_no_signal(true)
+
 
 func _on_office_texture_button_pressed():
 	if (active_screen == Screens.OFFICE):
